@@ -119,7 +119,7 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     type: "photo",
      imageUrl: "./assets/aistudio/janice-nicole.jpg",
     caption: "Janice - grandma's heart",
-    year: "Janice",
+    year: "Grandaughter",
     rotation: -1.2,
     tapeStyle: "washi-cream",
     note: "Her signature, affectionate way of asking for everyday errands or shopping trips."
@@ -358,7 +358,7 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
   {
     id: "family-charlie",
     name: "Charlie Merrill",
-    relationship: "Pat's Uncle · Pictured with Kit, Kim, Chuck & Ray",
+    relationship: "Pat's Uncle · Pictured with Chuck, Kit, Ray and Kim",
     years: "1930–1977",
     photoUrl: "./assets/aistudio/charlie-kids_375a2333.jpg",
     group: "Pat's Family"
@@ -384,28 +384,31 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
     name: "Scott Duarte",
     relationship: "Pat's Cousin - Pictured with Tina (his Grandmother)",
     years: "1998–2026",
+    photoUrl: "./assets/aistudio/scott-tina.jpg",
     group: "Pat's Family"
   },
   {
     id: "family-sharon",
     name: "Sharon Falasca",
-    relationship: "Pat's Cousin",
+    relationship: "Pat's Cousin - Pictured with Darren, Shelley and Scott",
     years: "1952–2022",
-    photoUrl: "./assets/aistudio/ray-darren_2e153524.jpg",
+   photoUrl: "./assets/aistudio/ray-darren_2e153524.jpg",
     group: "Pat's Family"
   },
   {
     id: "family-helen",
     name: "Helen Dalzell",
-    relationship: "Janice's Grandmother",
+    relationship: "Janice's Grandmother - Pictured with Bob, Uncle John and Aunt Beth",
     years: "1937–2017",
+    photoUrl: "./assets/aistudio/helen-kids.jpg",
     group: "Janice's Family Members"
   },
   {
     id: "family-martha",
     name: "Martha Livingston",
-    relationship: "Janice's Aunt",
+    relationship: "Janice's Aunt - Pictured with Janice",
     years: "1940–2021",
+    photoUrl: "./assets/aistudio/martha-janice.jpg",
     group: "Janice's Family Members"
   }
 ];
