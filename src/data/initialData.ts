@@ -115,9 +115,10 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     note: "Aunt Connie, part of our extended-extended family and always one of Pat's very favorite people."
   },
   {
-    id: "quote-2",
-    type: "quote",
-    caption: "\"You know what I need...\" / \"If you get a chance, could you...?\"",
+    id: "photo-nicole",
+    type: "photo",
+     imageUrl: "./assets/aistudio/janice-nicole.jpg",
+    caption: "Janice - grandma's heart",
     year: "Everyday Words",
     rotation: -1.2,
     tapeStyle: "washi-cream",
