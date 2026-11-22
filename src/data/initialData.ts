@@ -16,7 +16,7 @@ export const INITIAL_PROFILE: MemorialProfile = {
     {
       id: "chapter-1",
       title: "1. A Life of Heart & Tarrytown Roots",
-      content: "Born in Tarrytown, New York on April 16, 1947, Pat learned resilience early after losing her mother at age five and being welcomed into the home of her Aunt Joy and Uncle Charles Merrill. Growing up in Tarrytown alongside her cousins Chuck, Kim, Kit, and Ray, she naturally embraced the role of caregiver from a young age—spending 55 years surrounding her family with quiet strength, selfless care, and an open heart."
+      content: "Born in Tarrytown, New York on April 16, 1947, Pat learned resilience early after losing her mother at age five and being welcomed into the home of her Aunt Joy and Uncle Charles Merrill. Growing up in Irvington alongside her cousins Chuck, Kim, Kit, and Ray, she naturally embraced the role of caregiver from a young age—spending 55 years surrounding her family with quiet strength, selfless care, and an open heart."
     },
     {
       id: "chapter-2",
