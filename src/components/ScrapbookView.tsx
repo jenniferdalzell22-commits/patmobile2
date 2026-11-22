@@ -99,7 +99,7 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
         <div className="flex items-center justify-center gap-2 text-xs uppercase tracking-widest text-amber-800 font-semibold">
           <span>In Everlasting Remembrance</span>
           <span aria-hidden="true">·</span>
-          <span>Tarrytown, NY · Mother Cabrini Nurse</span>
+          <span>Irvington, NY · Mother Cabrini Nurse</span>
         </div>
 
         <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 tracking-tight text-balance">

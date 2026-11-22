@@ -15,7 +15,7 @@ export const INITIAL_PROFILE: MemorialProfile = {
   biographyChapters: [
     {
       id: "chapter-1",
-      title: "1. A Life of Heart & Tarrytown Roots",
+      title: "1. A Life of Heart & Irvington Roots",
       content: "Born in Tarrytown, New York on April 16, 1947, Pat learned resilience early after losing her mother at age five and being welcomed into the home of her Aunt Joy and Uncle Charles Merrill. Growing up in Irvington alongside her cousins Chuck, Kim, Kit, and Ray, she naturally embraced the role of caregiver from a young age—spending 55 years surrounding her family with quiet strength, selfless care, and an open heart."
     },
     {
@@ -46,7 +46,7 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     id: "photo-1",
     type: "photo",
     imageUrl: motherPortraitImg,
-    caption: "Pat smiling in the afternoon garden light, Tarrytown roots at heart.",
+    caption: "Pat smiling in the afternoon garden light, Irvington roots at heart.",
     year: "1947 – 2026",
     rotation: -2,
     tapeStyle: "washi-cream",
@@ -153,7 +153,7 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
     clues: [
       "No flour or cornstarch on this card—just yolks, condensed milk, and fresh lemon juice.",
       "Her brief instruction says simply: \"Bake at 350°F for 15 mins\" and chill.",
-      "A bright, comforting dessert shared with family across Tarrytown summers."
+      "A bright, comforting dessert shared with family across Irvington summers."
     ],
     familyStory: "Even without a written title at the top, anyone in the family could recognize Pat's handwriting and the bright citrus scent filling the kitchen. It was pure comfort on a plate.",
     difficulty: "Medium",
@@ -265,7 +265,7 @@ export const INITIAL_GUESTBOOK_ENTRIES: GuestbookEntry[] = [
     author: "Kit Merrill & Jeff Duarte",
     relationship: "Cousin & Family",
     date: "August 2026",
-    message: "Growing up together in Tarrytown with Aunt Joy and Uncle Charles, Pat was always the steady caregiver watching out for all of us. Even when we asked for her recipes and got 'You need to figure it out!' with a laugh, her love showed in every meal and every phone call.",
+    message: "Growing up together in Irvington with Aunt Joy and Uncle Charles, Pat was always the steady caregiver watching out for all of us. Even when we asked for her recipes and got 'You need to figure it out!' with a laugh, her love showed in every meal and every phone call.",
     symbol: "teacup",
     candleLit: true,
     heartsCount: 14
@@ -285,7 +285,7 @@ export const INITIAL_GUESTBOOK_ENTRIES: GuestbookEntry[] = [
     author: "Chuck & Lina Merrill",
     relationship: "Cousin & Family",
     date: "August 2026",
-    message: "From childhood days in Tarrytown to riding along with the younger generation as our favorite passenger in the Pat-Mobile, Pat brought quiet grace and kindness everywhere she went. An enduring legacy of selfless love and community care.",
+    message: "From childhood days in Irvington to riding along with the younger generation as our favorite passenger in the Pat-Mobile, Pat brought quiet grace and kindness everywhere she went. An enduring legacy of selfless love and community care.",
     symbol: "candle",
     candleLit: true,
     heartsCount: 11

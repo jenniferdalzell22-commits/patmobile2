@@ -26,7 +26,7 @@ export default function App() {
   // Memorial profile (editable & persisted)
   const [profile, setProfile] = useState<MemorialProfile>(() => {
     try {
-      const saved = localStorage.getItem('memorial_profile_v4');
+      const saved = localStorage.getItem('memorial_profile_v5');
       return saved ? JSON.parse(saved) : INITIAL_PROFILE;
     } catch {
       return INITIAL_PROFILE;
@@ -36,7 +36,7 @@ export default function App() {
   // Scrapbook items (persisted)
   const [scrapbookItems, setScrapbookItems] = useState<ScrapbookItem[]>(() => {
     try {
-      const saved = localStorage.getItem('memorial_scrapbook_v4');
+      const saved = localStorage.getItem('memorial_scrapbook_v5');
       return saved ? JSON.parse(saved) : INITIAL_SCRAPBOOK_ITEMS;
     } catch {
       return INITIAL_SCRAPBOOK_ITEMS;
@@ -46,7 +46,7 @@ export default function App() {
   // Mystery recipe guessing game cards (persisted)
   const [recipes, setRecipes] = useState<RecipeCardGame[]>(() => {
     try {
-      const saved = localStorage.getItem('memorial_recipes_v4');
+      const saved = localStorage.getItem('memorial_recipes_v5');
       return saved ? JSON.parse(saved) : INITIAL_RECIPE_GAMES;
     } catch {
       return INITIAL_RECIPE_GAMES;
@@ -56,7 +56,7 @@ export default function App() {
   // Guestbook entries (persisted)
   const [guestbookEntries, setGuestbookEntries] = useState<GuestbookEntry[]>(() => {
     try {
-      const saved = localStorage.getItem('memorial_guestbook_v4');
+      const saved = localStorage.getItem('memorial_guestbook_v5');
       return saved ? JSON.parse(saved) : INITIAL_GUESTBOOK_ENTRIES;
     } catch {
       return INITIAL_GUESTBOOK_ENTRIES;
@@ -66,7 +66,7 @@ export default function App() {
   // Candle counter
   const [candleCount, setCandleCount] = useState<number>(() => {
     try {
-      const saved = localStorage.getItem('memorial_candles_v4');
+      const saved = localStorage.getItem('memorial_candles_v5');
       return saved ? parseInt(saved, 10) : 55;
     } catch {
       return 55;
@@ -81,7 +81,7 @@ export default function App() {
   // Sync to localStorage
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_profile_v4', JSON.stringify(profile));
+      localStorage.setItem('memorial_profile_v5', JSON.stringify(profile));
     } catch {
       // ignore quota errors
     }
@@ -89,7 +89,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_scrapbook_v4', JSON.stringify(scrapbookItems));
+      localStorage.setItem('memorial_scrapbook_v5', JSON.stringify(scrapbookItems));
     } catch {
       // ignore
     }
@@ -97,7 +97,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_recipes_v4', JSON.stringify(recipes));
+      localStorage.setItem('memorial_recipes_v5', JSON.stringify(recipes));
     } catch {
       // ignore
     }
@@ -105,7 +105,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_guestbook_v4', JSON.stringify(guestbookEntries));
+      localStorage.setItem('memorial_guestbook_v5', JSON.stringify(guestbookEntries));
     } catch {
       // ignore
     }
@@ -113,7 +113,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_candles_v4', candleCount.toString());
+      localStorage.setItem('memorial_candles_v5', candleCount.toString());
     } catch {
       // ignore
     }
