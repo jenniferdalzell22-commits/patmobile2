@@ -88,11 +88,11 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     id: "photo-chuck",
     type: "photo",
     imageUrl: "./assets/aistudio/with-chuck_7bc4fd1f.jpg",
-    caption: "Pat with her cousin Chuck Merrill.",
+    caption: "Pat with her Cousin Chuck Merrill.",
     year: "Family Celebration",
     rotation: -1.4,
     tapeStyle: "washi-cream",
-    note: "Pat dressed up in pink alongside her cousin Chuck Merrill—a special family celebration from years past."
+    note: "Pat alongside her cousin Chuck Merrill—a special family celebration from years past."
   },
   {
     id: "photo-wedding-family",
@@ -119,7 +119,7 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     type: "photo",
      imageUrl: "./assets/aistudio/janice-nicole.jpg",
     caption: "Janice - Grandma's heart",
-    year: "Grandaughter with her cousin Nicole. ",
+    year: "Grandaughter with her Vousin Nicole. ",
     rotation: -1.2,
     tapeStyle: "washi-cream",
     note: "Her signature, affectionate way of asking for everyday errands or shopping trips."
@@ -392,7 +392,7 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
     name: "Sharon Falasca",
     relationship: "Pat's Cousin - Pictured with Darren, Shelley and Scott",
     years: "1952–2022",
-   photoUrl: "./assets/aistudio/ray-darren_2e153524.jpg",
+   photoUrl: "./assets/aistudio/sharon-all-siblings.jpg",
     group: "Pat's Family"
   },
   {
