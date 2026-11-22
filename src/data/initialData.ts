@@ -36,7 +36,7 @@ export const INITIAL_PROFILE: MemorialProfile = {
     {
       id: "chapter-5",
       title: "5. The \"Pat-Mobile\" & Extended Family",
-      content: "Though Janice was her only grandchild, Pat's heart encompassed the entire extended family. Dubbed the \"Pat-Mobile\" by the younger generation for driving the kids everywhere with warmth and patience, she loved each of her nieces, nephews, and extended family members as her own. She is cherished and remembered by Jennifer & Bob Dalzell; Janice Dalzell; Kit Merrill & Jeff Duarte; Kim Merrill & Mike Pauly; Chuck & Lina Merrill; and all their children—Nicole, Samantha, Kelly, Scott, Ellie, Jessica, Melissa, Rachel, and Charlie."
+      content: "Though Janice was her only grandchild, Pat's heart encompassed the entire extended family. Because Pat didn't drive, she was always the cherished passenger—which is what made her nickname \"Pat-Mobile\" (rhyming with the Batmobile from the Batman theme song!) such a funny family favorite. She loved each of her nieces, nephews, and extended family members as her own, and is cherished and remembered by Jennifer & Bob Dalzell; Janice Dalzell; Kit Merrill & Jeff Duarte; Kim Merrill & Mike Pauly; Chuck & Lina Merrill; and all their children—Nicole, Samantha, Kelly, Scott, Ellie, Jessica, Melissa, Rachel, and Charlie."
     }
   ]
 };
@@ -60,7 +60,7 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     year: "Shared Family Meals",
     rotation: 2.5,
     tapeStyle: "corners",
-    note: "Whether driving the kids in the legendary \"Pat-Mobile\" or gathering everyone for dinner, Pat's table was always open."
+    note: "Whether riding along as everyone's favorite passenger in the \"Pat-Mobile\" or gathering everyone for dinner, Pat's heart and table were always open."
   },
   {
     id: "quote-1",
@@ -93,10 +93,10 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     id: "keepsake-2",
     type: "keepsake",
     caption: "The Legendary \"Pat-Mobile\"",
-    year: "Family Chauffeur & Caregiver",
+    year: "Always the Passenger",
     rotation: 2.1,
     tapeStyle: "corners",
-    note: "Dubbed the \"Pat-Mobile\" by the younger generation—always ready to pick up Jennifer, Janice, and every niece and nephew with an open heart."
+    note: "Pat never drove and was always riding in the passenger seat—which made calling any car carrying her the \"Pat-Mobile\" (to the tune of the Batman / Batmobile song!) such a beloved family joke."
   }
 ];
 
@@ -124,7 +124,7 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
     clues: [
       "Like so many of Pat's index cards, there is no title—just exact ingredients and a mental note to \"put in pot.\"",
       "If you asked her how long to simmer it, she'd grin and tell you: \"You need to figure it out.\"",
-      "The savory aroma welcomed everyone back after long shifts at Mother Cabrini or rides in the Pat-Mobile."
+      "The savory aroma welcomed everyone back after long shifts at Mother Cabrini or family rides with Pat in the passenger seat."
     ],
     familyStory: "Pat cooked by heart and instinct. Holding her actual handwriting on cards like this keeps her presence alive in the kitchen—bridging sensory memory through taste, scent, and shared family meals.",
     difficulty: "Easy",
@@ -255,7 +255,7 @@ export const INITIAL_GUESTBOOK_ENTRIES: GuestbookEntry[] = [
     author: "Jennifer & Bob Dalzell",
     relationship: "Daughter & Son-in-Law",
     date: "August 2026",
-    message: "Mom, thank you for 55 years of quiet strength, selfless care, and an open heart. Whenever things felt uncertain, your voice was always there saying, 'It will work itself out' and 'Don't worry, it'll turn out ok.' We miss your gentle bond with Janice, your kitchen laughter, and every ride in the Pat-Mobile.",
+    message: "Mom, thank you for 55 years of quiet strength, selfless care, and an open heart. Whenever things felt uncertain, your voice was always there saying, 'It will work itself out' and 'Don't worry, it'll turn out ok.' We miss your gentle bond with Janice, your kitchen laughter, and having you right beside us in the passenger seat of the Pat-Mobile.",
     symbol: "rose",
     candleLit: true,
     heartsCount: 19
@@ -285,7 +285,7 @@ export const INITIAL_GUESTBOOK_ENTRIES: GuestbookEntry[] = [
     author: "Chuck & Lina Merrill",
     relationship: "Cousin & Family",
     date: "August 2026",
-    message: "From childhood days in Tarrytown to watching the younger generation pile into the legendary Pat-Mobile, Pat brought quiet grace and kindness everywhere she went. An enduring legacy of selfless love and community care.",
+    message: "From childhood days in Tarrytown to riding along with the younger generation as our favorite passenger in the Pat-Mobile, Pat brought quiet grace and kindness everywhere she went. An enduring legacy of selfless love and community care.",
     symbol: "candle",
     candleLit: true,
     heartsCount: 11
