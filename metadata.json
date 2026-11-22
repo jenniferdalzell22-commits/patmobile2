@@ -1,0 +1,6 @@
+{
+  "name": "Mom's Memorial & Kitchen Keepsakes",
+  "description": "A heartfelt memorial scrapbook, community guestbook, and interactive 'What Was She Cooking?' mystery recipe guessing game celebrating Mom's life, warmth, and kitchen stories.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
