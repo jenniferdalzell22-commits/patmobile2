@@ -148,7 +148,7 @@ export const RecipeQuizView: React.FC<RecipeQuizViewProps> = ({
       <section className="text-center space-y-3 max-w-3xl mx-auto">
         <div className="flex items-center justify-center gap-2 text-xs uppercase tracking-widest text-amber-800 font-semibold">
           <UtensilsCrossed className="w-4 h-4 text-amber-700" />
-          <span>Mom's Mystery Kitchen Game</span>
+          <span>Pat's Kitchen Archives</span>
         </div>
 
         <h1 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight">
@@ -156,9 +156,7 @@ export const RecipeQuizView: React.FC<RecipeQuizViewProps> = ({
         </h1>
 
         <p className="text-sm sm:text-base text-stone-700 leading-relaxed max-w-2xl mx-auto">
-          Mom filled her wooden recipe box with handwritten index cards, but she had a hilarious habit: 
-          she scribbled ingredients, measurements, and cooking notes without ever writing a title or header!
-          Can you examine her handwriting, check the clues, and deduce what dish she was preparing?
+          Pat cooked by heart and instinct. Her handwritten recipe cards often held just ingredient measurements and brief notes like &ldquo;cook at 350 degrees&rdquo; or &ldquo;put in pot&rdquo;—with no titles at all. And if you asked how to make it, she&apos;d laugh: &ldquo;You need to figure it out.&rdquo;
         </p>
 
         {/* Score & Progress */}
@@ -258,8 +256,8 @@ export const RecipeQuizView: React.FC<RecipeQuizViewProps> = ({
                     </div>
                   </div>
                   <div className="pt-6 border-t border-dashed border-stone-300 flex items-center justify-between text-xs text-stone-500 font-sans">
-                    <span>From Mom's Wooden Recipe Tin</span>
-                    <span className="italic font-serif-display">Secret Recipe</span>
+                    <span>From Pat's Kitchen Archives</span>
+                    <span className="italic font-serif-display">&ldquo;Cook at 350°&rdquo;</span>
                   </div>
                 </div>
               )}

@@ -6,32 +6,37 @@ import lemonPieRecipeImg from '../assets/images/mystery_recipe_lemon_pie_1794168
 import cinnamonTwistsRecipeImg from '../assets/images/mystery_recipe_cinnamon_twists_1794168303258.jpg';
 
 export const INITIAL_PROFILE: MemorialProfile = {
-  name: "Margaret 'Maggie' Turner",
-  maidenOrNickname: "Beloved Mother, Nana, and Queen of the Kitchen",
-  birthDate: "April 14, 1952",
-  passingDate: "October 18, 2024",
-  epitaph: "Her door was always open, her table always full, and her laughter heard from down the street.",
-  heroQuote: "If you leave this table hungry, that's your own fault.",
+  name: 'Patricia "Pat" Weaver',
+  maidenOrNickname: 'Affectionately Known as "Pat-Mobile"',
+  birthDate: "April 16, 1947",
+  passingDate: "July 31, 2026",
+  epitaph: "Born in Tarrytown, New York, Pat spent 55 years surrounding her family with quiet strength, selfless care, and an open heart.",
+  heroQuote: "It will work itself out.",
   biographyChapters: [
     {
       id: "chapter-1",
-      title: "1. Roots, Aprons & The Early Years",
-      content: "Born on a crisp April morning in Cedar Falls, Maggie grew up with flour on her hands and gardens in her heart. The eldest of four, she learned early that food was more than fuel—it was comfort, truce, and celebration. She married Tom on a sun-drenched June afternoon in 1974, wearing daisies in her hair and a smile that never dimmed for fifty wonderful years."
+      title: "1. A Life of Heart & Tarrytown Roots",
+      content: "Born in Tarrytown, New York on April 16, 1947, Pat learned resilience early after losing her mother at age five and being welcomed into the home of her Aunt Joy and Uncle Charles Merrill. Growing up in Tarrytown alongside her cousins Chuck, Kim, Kit, and Ray, she naturally embraced the role of caregiver from a young age—spending 55 years surrounding her family with quiet strength, selfless care, and an open heart."
     },
     {
       id: "chapter-2",
-      title: "2. The Heart of the Home: Her Sunday Kitchen",
-      content: "Maggie's kitchen was never quiet. The radio always played folk songs, a yellow enamel kettle whistled on the stove, and there was always room for one more chair at the table. Friends, neighbors, and kids from three blocks away knew that the back screen door was never locked. She never cooked for four when she could cook for twelve, and her pantry was a sanctuary for anyone who needed a warm cup of coffee and honest wisdom."
+      title: "2. Motherhood, Janice & Her 33-Year Nursing Calling",
+      content: "As a devoted single mother, Pat poured her life into guiding her daughter, Jennifer (married to Bob Dalzell). When her granddaughter Janice was born, Pat took on the role of grandmother with boundless devotion, sharing a tender and gentle bond tailored to Janice's special needs. Beyond her home, Pat dedicated 33 years of her life to Mother Cabrini Nursing Home, caring for residents living with Alzheimer's disease, where she was widely recognized for her gentleness, skill, and deep empathy."
     },
     {
       id: "chapter-3",
-      title: "3. Her Mystery Recipe Box & Kitchen Secrets",
-      content: "Mom was notorious for scribbling recipes on whatever was within arm's reach: index cards, the back of gas receipts, church bulletins, and napkin corners. Her greatest culinary quirk? She rarely wrote titles on her cards. She assumed anyone who truly loved food would recognize a dish by its soul—a dash of brown sugar here, a sprig of thyme there, and a note in the margin that simply read: 'Bake till it smells like Sunday.'"
+      title: "3. Her Lexicon & Everyday Words",
+      content: "Her exact phrases carry the true sound of her voice and grounding presence: \"It will work itself out\"—her steady reassurance whenever life felt uncertain or stressful; \"Don't worry, it'll turn out ok\"—her comforting promise over 55 years of motherhood and grandmothership; \"You know what I need...\" and \"If you get a chance, could you...?\"—her affectionate way of asking for everyday errands; and \"You need to figure it out\"—what she'd playfully say with a laugh when asked for her secret recipes after giving no basic instructions!"
     },
     {
       id: "chapter-4",
-      title: "4. A Legacy Written in Warmth",
-      content: "Maggie taught us that kindness is an everyday practice. She cheered at every rainy soccer game, sent handwritten birthday cards to dozens of cousins, and never let anyone feel alone. As we gather, cook her dishes, and retell her favorite jokes, her spirit continues to warm every corner of our lives."
+      title: "4. Kitchen Archives & \"Cook at 350°\"",
+      content: "Pat cooked by heart and instinct. Her handwritten recipe cards—often written with just ingredient measurements and brief notes like \"cook at 350 degrees\" or \"put in pot\" without any titles—are precious tactile heirlooms. Holding her actual handwriting keeps her presence alive in the kitchen, bridging sensory memory through taste, scent, and shared family meals."
+    },
+    {
+      id: "chapter-5",
+      title: "5. The \"Pat-Mobile\" & Extended Family",
+      content: "Though Janice was her only grandchild, Pat's heart encompassed the entire extended family. Dubbed the \"Pat-Mobile\" by the younger generation for driving the kids everywhere with warmth and patience, she loved each of her nieces, nephews, and extended family members as her own. She is cherished and remembered by Jennifer & Bob Dalzell; Janice Dalzell; Kit Merrill & Jeff Duarte; Kim Merrill & Mike Pauly; Chuck & Lina Merrill; and all their children—Nicole, Samantha, Kelly, Scott, Ellie, Jessica, Melissa, Rachel, and Charlie."
     }
   ]
 };
@@ -41,39 +46,57 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     id: "photo-1",
     type: "photo",
     imageUrl: motherPortraitImg,
-    caption: "Mom in her beloved peony & wildflower garden, sunny July afternoon.",
-    year: "Summer 2018",
+    caption: "Pat smiling in the afternoon garden light, Tarrytown roots at heart.",
+    year: "1947 – 2026",
     rotation: -2,
     tapeStyle: "washi-cream",
-    note: "She spent every sunny morning talking to her hydrangeas and clipping fresh blooms for the kitchen table."
+    note: "Widely recognized at Mother Cabrini Nursing Home and at home for her gentleness, quiet strength, and deep empathy."
   },
   {
     id: "photo-2",
     type: "photo",
     imageUrl: familyKitchenImg,
-    caption: "Sunday dinner crew laughing around the old oak table.",
-    year: "October 1984",
+    caption: "Around the family table—where taste, scent, and laughter brought everyone together.",
+    year: "Shared Family Meals",
     rotation: 2.5,
     tapeStyle: "corners",
-    note: "She insisted on fresh homemade pie even on a busy weeknight."
+    note: "Whether driving the kids in the legendary \"Pat-Mobile\" or gathering everyone for dinner, Pat's table was always open."
   },
   {
     id: "quote-1",
     type: "quote",
-    caption: "Mom's Golden Rule",
-    year: "Spoken Daily",
+    caption: "\"Don't worry, it'll turn out ok.\"",
+    year: "55 Years of Comfort",
     rotation: -1.5,
     tapeStyle: "washi-pink",
-    note: "“Never trust a recipe that doesn't ask for a little bit of butter, and never stay mad at someone you could make soup for.”"
+    note: "Her comforting promise over 55 years of motherhood and grandmothership—paired with her steady refrain: \"It will work itself out.\""
   },
   {
     id: "keepsake-1",
     type: "keepsake",
-    caption: "Her Brass Measuring Spoons",
-    year: "Est. 1974",
+    caption: "\"You need to figure it out.\"",
+    year: "Pat's Kitchen Humor",
     rotation: 1.8,
     tapeStyle: "top",
-    note: "The 'tablespoon' was so worn down from decades of stirring that it was probably closer to one-and-a-half tablespoons. That was her secret."
+    note: "What Pat would playfully say with a laugh whenever anyone asked for her secret recipes after she left only notes like \"cook at 350 degrees\" or \"put in pot.\""
+  },
+  {
+    id: "quote-2",
+    type: "quote",
+    caption: "\"You know what I need...\" / \"If you get a chance, could you...?\"",
+    year: "Everyday Words",
+    rotation: -1.2,
+    tapeStyle: "washi-cream",
+    note: "Her signature, affectionate way of asking for everyday errands or shopping trips."
+  },
+  {
+    id: "keepsake-2",
+    type: "keepsake",
+    caption: "The Legendary \"Pat-Mobile\"",
+    year: "Family Chauffeur & Caregiver",
+    rotation: 2.1,
+    tapeStyle: "corners",
+    note: "Dubbed the \"Pat-Mobile\" by the younger generation—always ready to pick up Jennifer, Janice, and every niece and nephew with an open heart."
   }
 ];
 
@@ -82,11 +105,11 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
     id: "recipe-1",
     imageUrl: potRoastRecipeImg,
     mysteryTitlePlaceholder: "Mystery Recipe #1",
-    actualDishName: "Mom's Sunday Pot Roast & Caramelized Carrots",
+    actualDishName: "Pat's Sunday Pot Roast & Carrots (\"Put in Pot\")",
     options: [
-      "Mom's Sunday Pot Roast & Caramelized Carrots",
+      "Pat's Sunday Pot Roast & Carrots (\"Put in Pot\")",
       "Traditional Irish Beef Stew",
-      "French French Onion Braised Brisket",
+      "French Onion Braised Brisket",
       "Classic Shepherd's Pie Filling"
     ],
     correctOptionIndex: 0,
@@ -99,23 +122,23 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
       "Thyme, 3-4 fresh sprigs"
     ],
     clues: [
-      "The rich savory aroma would fill the entire house starting around 1:00 PM every Sunday autumn afternoon.",
-      "She always seared the beef hard in her heavy red Dutch oven until deeply browned before pouring in the broth.",
-      "Notice how thick she cut the carrots—she always said: 'Small carrots turn to mush, big carrots turn into candy.'"
+      "Like so many of Pat's index cards, there is no title—just exact ingredients and a mental note to \"put in pot.\"",
+      "If you asked her how long to simmer it, she'd grin and tell you: \"You need to figure it out.\"",
+      "The savory aroma welcomed everyone back after long shifts at Mother Cabrini or rides in the Pat-Mobile."
     ],
-    familyStory: "This was Mom's signature cold-weather comfort dish. The rule in our house was whoever set the table got first dibs on the pan drippings for dipping fresh crusty sourdough bread. If you smelled this cooking, you knew everyone you loved would be around the table that evening.",
+    familyStory: "Pat cooked by heart and instinct. Holding her actual handwriting on cards like this keeps her presence alive in the kitchen—bridging sensory memory through taste, scent, and shared family meals.",
     difficulty: "Easy",
     category: "Dinner & Savory",
-    tipsFromMom: "Sear it until it's almost darker than you think it should be. The fond on the bottom of the pot is where all the love lives."
+    tipsFromMom: "Put it in the pot, give it time, and don't worry—it'll turn out ok."
   },
   {
     id: "recipe-2",
     imageUrl: lemonPieRecipeImg,
     mysteryTitlePlaceholder: "Mystery Recipe #2",
-    actualDishName: "Grandma's Secret Lemon Icebox Pie",
+    actualDishName: "Pat's Cool Lemon Icebox Pie (\"Cook at 350°\")",
     options: [
       "Key Lime Tartlet",
-      "Grandma's Secret Lemon Icebox Pie",
+      "Pat's Cool Lemon Icebox Pie (\"Cook at 350°\")",
       "Baked Lemon Curd Cheesecake",
       "Warm Lemon Pudding Cake"
     ],
@@ -128,24 +151,24 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
       "Bake 15 mins at 350°F · Chill 3 hours"
     ],
     clues: [
-      "Notice there is NO flour or cornstarch—just egg yolks and sweetened condensed milk!",
-      "She strictly forbade bottled lemon juice: 'If you don't squeeze them yourself, you might as well eat store-bought candy.'",
-      "This was served on the Fourth of July and every family picnic, topped with towering swirls of cold heavy cream."
+      "No flour or cornstarch on this card—just yolks, condensed milk, and fresh lemon juice.",
+      "Her brief instruction says simply: \"Bake at 350°F for 15 mins\" and chill.",
+      "A bright, comforting dessert shared with family across Tarrytown summers."
     ],
-    familyStory: "Mom's Lemon Icebox Pie was the centerpiece of every summer family reunion. It was silky, tart, and cool as a river breeze. If anyone had a tough week, Mom would show up on their porch with this pie in a gingham dish towel.",
+    familyStory: "Even without a written title at the top, anyone in the family could recognize Pat's handwriting and the bright citrus scent filling the kitchen. It was pure comfort on a plate.",
     difficulty: "Medium",
     category: "Baking & Desserts",
-    tipsFromMom: "Whisk the yolks until they look like pale sunshine before adding the milk. Don't rush the chill time!"
+    tipsFromMom: "Cook at 350 degrees—when you've baked it as many times as I have, you'll know when it's done."
   },
   {
     id: "recipe-3",
     imageUrl: cinnamonTwistsRecipeImg,
     mysteryTitlePlaceholder: "Mystery Recipe #3",
-    actualDishName: "Christmas Morning Cinnamon Rolls",
+    actualDishName: "Holiday Morning Cinnamon Rolls",
     options: [
       "Old-Fashioned Apple Cinnamon Strudel",
       "Swedish Cardamom Sugar Buns",
-      "Christmas Morning Cinnamon Rolls",
+      "Holiday Morning Cinnamon Rolls",
       "Brown Sugar Monkey Bread"
     ],
     correctOptionIndex: 2,
@@ -157,23 +180,23 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
       "Glaze: powdered sugar, milk, vanilla (make it thick!)"
     ],
     clues: [
-      "The handwritten note says: 'Sprinkle heavy with cinnamon & brown sugar (for that perfect swirl!)'.",
-      "The dough was kneaded on Christmas Eve and placed in a greased bowl near the radiator to rise overnight.",
-      "The vanilla glaze instruction explicitly emphasizes: '(make it thick!)'."
+      "The handwritten note says: \"Sprinkle heavy with cinnamon & brown sugar (for that perfect swirl!).\"",
+      "Her glaze note insists: \"(make it thick!)\" — classic Pat cooking by instinct.",
+      "Baked at 350° for 20–25 minutes while the whole house woke up."
     ],
-    familyStory: "Nobody was allowed to touch a single Christmas present until these rolls were pulled bubbling and golden out of the oven. Mom would drizzle the warm vanilla glaze with a soup spoon, coating everything in sugary sweetness. The house smelled like holidays for three days straight.",
+    familyStory: "Pat loved bringing warm treats to share with Jennifer, Janice, and all the Merrill nieces and nephews. The kitchen smelled like cinnamon and vanilla all morning.",
     difficulty: "Easy",
     category: "Holiday Traditions",
-    tipsFromMom: "Spread the butter all the way to the very edge of the dough. Nobody likes a dry cinnamon roll corner."
+    tipsFromMom: "If you run low on cinnamon, don't worry—it will work itself out."
   },
   {
     id: "recipe-4",
     imageUrl: "",
     mysteryTitlePlaceholder: "Mystery Recipe #4",
-    actualDishName: "Mom's 'Emergency' 2 AM Midnight Chili",
+    actualDishName: "Pat's Post-Shift Comfort Chili",
     options: [
       "Texas Cowboy Beef Chili",
-      "Mom's 'Emergency' 2 AM Midnight Chili",
+      "Pat's Post-Shift Comfort Chili",
       "Smoky Barbecue Baked Beans",
       "Campfire Beef Goulash"
     ],
@@ -183,28 +206,28 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
       "2 cans dark kidney beans (undrained)",
       "1 large can crushed San Marzano tomatoes",
       "2 tbsp chili powder, 1 tbsp cumin, 1 tsp garlic salt",
-      "Secret: 1 tbsp brown sugar + 1/4 tsp cinnamon!"
+      "Note in margin: \"Put in pot · simmer till ready\""
     ],
     clues: [
-      "Whenever power went out in winter storms, this pot immediately went onto the gas stove.",
-      "Look at the secret spices: a spoonful of brown sugar and a touch of cinnamon in beef chili!",
-      "She called it 'Emergency Chili' because she could pull it together from pantry cans in twenty minutes flat."
+      "Her handwritten margin note just says \"put in pot\" with no exact simmer time.",
+      "Made to warm everyone up on cold New York evenings after shifts at Mother Cabrini.",
+      "Packed with pantry staples so dinner was always ready when family stopped by."
     ],
-    familyStory: "When late-night college kids stumbled home for winter break, or when a blizzard knocked out the neighborhood electricity, Mom was in her flannel robe simmering this chili. The pinch of cinnamon made everyone ask: 'What is that incredible flavor?' Mom would just wink and say, 'Love, darling.'",
+    familyStory: "After 33 years of caring for residents at Mother Cabrini Nursing Home, Pat still came home ready to nourish her family. A simmering pot on the stove meant comfort for everyone who walked through the door.",
     difficulty: "Medium",
     category: "Dinner & Savory",
-    tipsFromMom: "Don't drain the kidney beans! The starchy broth thickens the pot better than any cornstarch ever could."
+    tipsFromMom: "Put it in the pot and let it simmer—you need to figure it out from how it smells!"
   },
   {
     id: "recipe-5",
     imageUrl: "",
     mysteryTitlePlaceholder: "Mystery Recipe #5",
-    actualDishName: "The Giant Skillet Chocolate Chip Cookie",
+    actualDishName: "Family Table Cast-Iron Chocolate Chip Cookie",
     options: [
       "Classic Bakery Fudge Brownies",
-      "The Giant Skillet Chocolate Chip Cookie",
+      "Family Table Cast-Iron Chocolate Chip Cookie",
       "Butterscotch Blondie Bars",
-      "Grandma's Oatmeal Raisin Crisp"
+      "Oatmeal Raisin Crisp"
     ],
     correctOptionIndex: 1,
     ingredientsSnippet: [
@@ -212,69 +235,69 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
       "3/4 cup brown sugar + 1/2 cup white sugar",
       "2 eggs + 1 yolk, 2 tsp vanilla",
       "2 1/4 cups flour, 1 tsp baking soda, flaky sea salt",
-      "12 oz semi-sweet chocolate chunks, baked in 10-inch cast iron"
+      "12 oz chocolate chunks · \"Cook at 350 degrees\""
     ],
     clues: [
-      "The recipe specifies browning the butter first until nutty and amber-golden.",
-      "Baked directly inside a seasoned 10-inch cast iron skillet until the edges are crispy and center is gooey.",
-      "Always served warm in the center of the table with five spoons and a tub of vanilla ice cream right on top."
+      "The recipe calls for a single 10-inch skillet and simply says \"cook at 350 degrees.\"",
+      "Made for nights when Janice and the cousins gathered together.",
+      "Served warm in the center of the table—no individual plates required."
     ],
-    familyStory: "Whenever someone had a heartbreak, failed a driving test, or celebrated an A+, Mom didn't bake individual cookies—she baked one giant cookie in the skillet. We'd sit around the table with spoons, eating straight from the hot pan. No plates needed.",
+    familyStory: "Whether celebrating a milestone or lifting spirits after a tough week, Pat's skillet cookie turned any evening into a cozy family celebration.",
     difficulty: "Legendary",
     category: "Baking & Desserts",
-    tipsFromMom: "Pull it out when the center still looks slightly underdone. The cast iron keeps cooking on the counter for another five minutes."
+    tipsFromMom: "Cook at 350 degrees and pull it while it's still soft—don't worry, it'll turn out ok."
   }
 ];
 
 export const INITIAL_GUESTBOOK_ENTRIES: GuestbookEntry[] = [
   {
     id: "entry-1",
-    author: "Sarah Turner-Collins",
-    relationship: "Daughter",
-    date: "November 2, 2024",
-    message: "Mom, every time I step into my own kitchen now, I hear you humming. Thank you for showing me how to feed people not just with meals, but with open arms and fierce kindness. We are taking care of Dad just like you told us to, though none of us can make coffee the way you did. I miss your morning phone calls so much.",
+    author: "Jennifer & Bob Dalzell",
+    relationship: "Daughter & Son-in-Law",
+    date: "August 2026",
+    message: "Mom, thank you for 55 years of quiet strength, selfless care, and an open heart. Whenever things felt uncertain, your voice was always there saying, 'It will work itself out' and 'Don't worry, it'll turn out ok.' We miss your gentle bond with Janice, your kitchen laughter, and every ride in the Pat-Mobile.",
     symbol: "rose",
+    candleLit: true,
+    heartsCount: 19
+  },
+  {
+    id: "entry-2",
+    author: "Kit Merrill & Jeff Duarte",
+    relationship: "Cousin & Family",
+    date: "August 2026",
+    message: "Growing up together in Tarrytown with Aunt Joy and Uncle Charles, Pat was always the steady caregiver watching out for all of us. Even when we asked for her recipes and got 'You need to figure it out!' with a laugh, her love showed in every meal and every phone call.",
+    symbol: "teacup",
     candleLit: true,
     heartsCount: 14
   },
   {
-    id: "entry-2",
-    author: "David & Eleanor Henderson",
-    relationship: "Next Door Neighbors (32 Years)",
-    date: "October 29, 2024",
-    message: "When we moved onto Elm Street in 1992 with an infant and three broken moving boxes, Maggie appeared at our front door within an hour holding a warm chicken casserole, paper plates, and two cold sodas. She watched our kids grow up, watered our ferns when we traveled, and leaned over the cedar fence to trade tomato gardening tips. The neighborhood feels so much quieter without her bright laughter.",
-    symbol: "candle",
-    candleLit: true,
-    heartsCount: 9
-  },
-  {
     id: "entry-3",
-    author: "Lucas (Age 11)",
-    relationship: "Grandson",
-    date: "October 26, 2024",
-    message: "Nana was the best because she let me sneak chocolate chips straight from the freezer bag and she never told Mom. She taught me how to plant pumpkin seeds and told me that worms are just garden friends. I made cinnamon toast this morning and thought of you, Nana.",
+    author: "Kim Merrill & Mike Pauly",
+    relationship: "Cousin & Family",
+    date: "August 2026",
+    message: "Pat had a way of making every single person in the extended family—including all the kids—feel deeply loved as her own. We will always smile remembering her asking, 'If you get a chance, could you...?' and her endless generosity.",
     symbol: "heart",
-    candleLit: true,
-    heartsCount: 18
-  },
-  {
-    id: "entry-4",
-    author: "Claire Bennett",
-    relationship: "Sister & Lifetime Confidante",
-    date: "October 24, 2024",
-    message: "Maggie was my big sister, my protector, and my favorite co-conspirator. Growing up, we shared a bedroom under the attic eaves and talked until 2 AM about our dreams. She lived every single day with gratitude. Maggie, thank you for seventy-two years of pure unconditional love. Save a seat for me at the big table.",
-    symbol: "teacup",
     candleLit: true,
     heartsCount: 12
   },
   {
+    id: "entry-4",
+    author: "Chuck & Lina Merrill",
+    relationship: "Cousin & Family",
+    date: "August 2026",
+    message: "From childhood days in Tarrytown to watching the younger generation pile into the legendary Pat-Mobile, Pat brought quiet grace and kindness everywhere she went. An enduring legacy of selfless love and community care.",
+    symbol: "candle",
+    candleLit: true,
+    heartsCount: 11
+  },
+  {
     id: "entry-5",
-    author: "Marcus Vance",
-    relationship: "Family Friend",
-    date: "October 22, 2024",
-    message: "I spent nearly half my high school years sitting at the Turner kitchen island doing homework while Maggie tested new soups on us. She had a gift for making every teenager feel like their thoughts mattered. A truly remarkable, generous soul.",
+    author: "Mother Cabrini Nursing Home Colleague",
+    relationship: "Fellow Nurse (33 Years Together)",
+    date: "August 2026",
+    message: "Pat was widely recognized throughout Cabrini for her gentleness, skill, and deep empathy. For 33 years, she treated every resident living with Alzheimer's disease with dignity and tenderness. She taught all of us what true caregiving looks like.",
     symbol: "spoon",
     candleLit: true,
-    heartsCount: 7
+    heartsCount: 16
   }
 ];

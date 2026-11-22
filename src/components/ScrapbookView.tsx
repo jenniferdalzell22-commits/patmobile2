@@ -91,7 +91,7 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
         <div className="flex items-center justify-center gap-2 text-xs uppercase tracking-widest text-amber-800 font-semibold">
           <span>In Everlasting Remembrance</span>
           <span aria-hidden="true">·</span>
-          <span>Cherished Mother & Grandmother</span>
+          <span>Tarrytown, NY · Mother Cabrini Nurse</span>
         </div>
 
         <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 tracking-tight text-balance">
@@ -146,10 +146,10 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-stone-200 pb-3">
           <div>
             <h2 className="font-serif-display text-2xl sm:text-3xl font-bold text-stone-900">
-              Mom's Scrapbook & Treasures
+              Pat's Scrapbook & Treasures
             </h2>
             <p className="text-xs text-stone-500 mt-1">
-              Photographs, laughter, and tokens pinned to her memory album. Click any photo to enlarge.
+              Photographs, everyday phrases, and tokens pinned to her memory album. Click any card to enlarge.
             </p>
           </div>
           <button
@@ -241,7 +241,7 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
               "What Was She Cooking?"
             </h3>
             <p className="text-sm text-stone-700 leading-relaxed">
-              Mom had a legendary habit: she scribbled recipes onto index cards and scrap paper, but never put headers or titles on them! Step into her kitchen, inspect her actual handwriting, and see if you can guess what she was baking.
+              Pat cooked by heart and instinct—jotting down ingredient measurements with notes like "cook at 350 degrees" or "put in pot," and playfully laughing "You need to figure it out" when asked for instructions! Step into her kitchen archives and see if you can guess the dish.
             </p>
           </div>
           <button
@@ -350,7 +350,7 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
                   required
                   value={newCaption}
                   onChange={(e) => setNewCaption(e.target.value)}
-                  placeholder="e.g. Mom baking apple crisp with the grandkids"
+                  placeholder="e.g. Pat baking with Jennifer and Janice"
                   className="w-full px-3 py-2 text-sm bg-white border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500"
                 />
               </div>
@@ -376,7 +376,7 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
                   rows={3}
                   value={newNote}
                   onChange={(e) => setNewNote(e.target.value)}
-                  placeholder="What was happening in this moment? What did Mom say?"
+                  placeholder="What was happening in this moment? What did Pat say?"
                   className="w-full px-3 py-2 text-sm bg-white border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 resize-none"
                 />
               </div>
