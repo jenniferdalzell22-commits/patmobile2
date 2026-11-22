@@ -36,7 +36,7 @@ export const INITIAL_PROFILE: MemorialProfile = {
     {
       id: "chapter-5",
       title: "5. The \"Pat-Mobile\" & Extended Family",
-      content: "Though Janice was her only grandchild, Pat's heart encompassed the entire extended family. Because Pat didn't drive, she was always the cherished passenger—which is what made her nickname \"Pat-Mobile\" (rhyming with the Batmobile from the Batman theme song!) such a funny family favorite. She loved each of her nieces, nephews, and extended family members as her own, and is cherished and remembered by Jennifer & Bob Dalzell; Janice Dalzell; Kit Merrill & Jeff Duarte; Kim Merrill & Mike Pauly; Chuck & Lina Merrill; and all their children—Nicole, Samantha, Kelly, Scott, Ellie, Jessica, Melissa, Rachel, and Charlie."
+      content: "Though Janice was her only grandchild, Pat's heart encompassed the entire extended family. Because Pat didn't drive, she was always the cherished passenger—which is what made her nickname \"Pat-Mobile\" (rhyming with the Batmobile from the Batman theme song!) such a funny family favorite. She loved each of her cousins and extended family members as her own, and is cherished and remembered by Jennifer (Weaver) & Bob Dalzell; Janice Dalzell; Kit (Merrill) & Jeff Duarte; Kim (Merrill) & Mike Pauly; Chuck & Lina Merrill; and their children—Nicole, Samantha, Kelly, Ellie, Jessica, Melissa, Rachel, and Charlie—and remembered alongside Scott, who passed away just a few weeks after Pat."
     }
   ]
 };
@@ -78,7 +78,9 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     year: "Pat's Kitchen Humor",
     rotation: 1.8,
     tapeStyle: "top",
-    note: "What Pat would playfully say with a laugh whenever anyone asked for her secret recipes after she left only notes like \"cook at 350 degrees\" or \"put in pot.\""
+    note: "What Pat would playfully say with a laugh whenever anyone asked for her secret recipes after she left only notes like \"cook at 350 degrees\" or \"put in pot.\" Think you can decode her recipe cards? Try the \"What Was She Cooking?\" game!",
+    actionLabel: "Play \"What Was She Cooking?\" →",
+    actionTarget: "quiz"
   },
   {
     id: "quote-2",
@@ -184,7 +186,7 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
       "Her glaze note insists: \"(make it thick!)\" — classic Pat cooking by instinct.",
       "Baked at 350° for 20–25 minutes while the whole house woke up."
     ],
-    familyStory: "Pat loved bringing warm treats to share with Jennifer, Janice, and all the Merrill nieces and nephews. The kitchen smelled like cinnamon and vanilla all morning.",
+    familyStory: "Pat loved bringing warm treats to share with Jennifer, Janice, and all the Merrill cousins. The kitchen smelled like cinnamon and vanilla all morning.",
     difficulty: "Easy",
     category: "Holiday Traditions",
     tipsFromMom: "If you run low on cinnamon, don't worry—it will work itself out."
@@ -252,7 +254,7 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
 export const INITIAL_GUESTBOOK_ENTRIES: GuestbookEntry[] = [
   {
     id: "entry-1",
-    author: "Jennifer & Bob Dalzell",
+    author: "Jennifer (Weaver) & Bob Dalzell",
     relationship: "Daughter & Son-in-Law",
     date: "August 2026",
     message: "Mom, thank you for 55 years of quiet strength, selfless care, and an open heart. Whenever things felt uncertain, your voice was always there saying, 'It will work itself out' and 'Don't worry, it'll turn out ok.' We miss your gentle bond with Janice, your kitchen laughter, and having you right beside us in the passenger seat of the Pat-Mobile.",
@@ -262,7 +264,7 @@ export const INITIAL_GUESTBOOK_ENTRIES: GuestbookEntry[] = [
   },
   {
     id: "entry-2",
-    author: "Kit Merrill & Jeff Duarte",
+    author: "Kit (Merrill) & Jeff Duarte",
     relationship: "Cousin & Family",
     date: "August 2026",
     message: "Growing up together in Irvington with Aunt Joy and Uncle Charles, Pat was always the steady caregiver watching out for all of us. Even when we asked for her recipes and got 'You need to figure it out!' with a laugh, her love showed in every meal and every phone call.",
@@ -272,7 +274,7 @@ export const INITIAL_GUESTBOOK_ENTRIES: GuestbookEntry[] = [
   },
   {
     id: "entry-3",
-    author: "Kim Merrill & Mike Pauly",
+    author: "Kim (Merrill) & Mike Pauly",
     relationship: "Cousin & Family",
     date: "August 2026",
     message: "Pat had a way of making every single person in the extended family—including all the kids—feel deeply loved as her own. We will always smile remembering her asking, 'If you get a chance, could you...?' and her endless generosity.",

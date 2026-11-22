@@ -21,6 +21,8 @@ export interface ScrapbookItem {
   rotation: number; // e.g. -2, 1, 3 for natural scrapbook tilt
   tapeStyle: 'top' | 'corners' | 'washi-pink' | 'washi-cream';
   note?: string;
+  actionLabel?: string;
+  actionTarget?: 'quiz' | 'guestbook';
 }
 
 export interface RecipeCardGame {

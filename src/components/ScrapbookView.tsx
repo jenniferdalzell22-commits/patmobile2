@@ -365,6 +365,22 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
                           {item.year}
                         </span>
                       )}
+                      {item.actionLabel && item.actionTarget && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (item.actionTarget === 'quiz') {
+                              onNavigateToQuiz();
+                            } else {
+                              onNavigateToGuestbook();
+                            }
+                          }}
+                          className="mt-1.5 text-[11px] font-semibold text-amber-800 hover:text-amber-950 underline underline-offset-2 transition-colors cursor-pointer text-left block"
+                        >
+                          {item.actionLabel}
+                        </button>
+                      )}
                     </>
                   )}
                 </div>

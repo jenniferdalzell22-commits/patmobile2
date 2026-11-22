@@ -5,9 +5,10 @@ import { ScrapbookItem } from '../types';
 interface PhotoLightboxProps {
   item: ScrapbookItem | null;
   onClose: () => void;
+  onNavigate?: (target: 'quiz' | 'guestbook') => void;
 }
 
-export const PhotoLightbox: React.FC<PhotoLightboxProps> = ({ item, onClose }) => {
+export const PhotoLightbox: React.FC<PhotoLightboxProps> = ({ item, onClose, onNavigate }) => {
   if (!item) return null;
 
   return (
@@ -69,10 +70,22 @@ export const PhotoLightbox: React.FC<PhotoLightboxProps> = ({ item, onClose }) =
             </div>
           )}
 
-          <div className="mt-4 flex justify-end">
+          <div className="mt-4 flex items-center justify-end gap-3">
+            {item.actionLabel && item.actionTarget && onNavigate && (
+              <button
+                onClick={() => {
+                  const target = item.actionTarget!;
+                  onClose();
+                  onNavigate(target);
+                }}
+                className="px-4 py-2 text-xs font-semibold text-white bg-amber-800 hover:bg-amber-900 rounded-lg transition-colors cursor-pointer"
+              >
+                {item.actionLabel}
+              </button>
+            )}
             <button
               onClick={onClose}
-              className="px-4 py-2 text-xs font-semibold text-stone-700 bg-stone-200/70 hover:bg-stone-300 rounded-lg transition-colors"
+              className="px-4 py-2 text-xs font-semibold text-stone-700 bg-stone-200/70 hover:bg-stone-300 rounded-lg transition-colors cursor-pointer"
             >
               Close
             </button>
