@@ -122,7 +122,7 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     year: "Grandaughter with her Cousin Nicole. ",
     rotation: -1.2,
     tapeStyle: "washi-cream",
-    note: "Her signature, affectionate way of asking for everyday errands or shopping trips."
+    note: "A snapshot of Janice—one of the bright lights who always brought an extra measure of warmth, pride, and joy to Grandma's heart."
   },
   {
     id: "keepsake-2",
