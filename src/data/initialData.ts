@@ -358,7 +358,7 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
   {
     id: "family-charlie",
     name: "Charlie Merrill",
-    relationship: "Pat's Uncle · Pictured with his kids (Kit, Kim, Chuck & Ray)",
+    relationship: "Pat's Uncle · Pictured with Kit, Kim, Chuck & Ray",
     years: "1930–1977",
     photoUrl: "./assets/aistudio/charlie-kids_375a2333.jpg",
     group: "Pat's Family"
@@ -366,7 +366,7 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
   {
     id: "family-nevin",
     name: "Nevin Broderick",
-    relationship: "Pat's Uncle · Pictured with sister Joy",
+    relationship: "Pat's Uncle · Pictured with Joy (Sister)",
     years: "1931–2013",
     photoUrl: "./assets/aistudio/nevin-joy_f18d4ac0.jpg",
     group: "Pat's Family"
@@ -374,7 +374,7 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
   {
     id: "family-ray",
     name: "Ray Merrill",
-    relationship: "Pat's Cousin · Pictured with cousin Darren",
+    relationship: "Pat's Cousin · Pictured with Darren (Cousin)",
     years: "1961–2015",
     photoUrl: "./assets/aistudio/ray-darren_2e153524.jpg",
     group: "Pat's Family"
@@ -382,7 +382,7 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
   {
     id: "family-scott",
     name: "Scott Duarte",
-    relationship: "Pat's Cousin",
+    relationship: "Pat's Cousin - Pictured with Tina (his Grandmother)",
     years: "1998–2026",
     group: "Pat's Family"
   },
@@ -391,6 +391,7 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
     name: "Sharon Falasca",
     relationship: "Pat's Cousin",
     years: "1952–2022",
+    photoUrl: "./assets/aistudio/ray-darren_2e153524.jpg",
     group: "Pat's Family"
   },
   {
