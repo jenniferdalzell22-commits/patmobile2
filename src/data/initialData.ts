@@ -1,4 +1,9 @@
 import { MemorialProfile, ScrapbookItem, RecipeCardGame, GuestbookEntry } from '../types';
+import motherPortraitImg from '../assets/images/mother_portrait_scrapbook_1794168301840.jpg';
+import familyKitchenImg from '../assets/images/family_kitchen_memory_1794168302504.jpg';
+import potRoastRecipeImg from '../assets/images/mystery_recipe_pot_roast_1794168304132.jpg';
+import lemonPieRecipeImg from '../assets/images/mystery_recipe_lemon_pie_1794168303342.jpg';
+import cinnamonTwistsRecipeImg from '../assets/images/mystery_recipe_cinnamon_twists_1794168303258.jpg';
 
 export const INITIAL_PROFILE: MemorialProfile = {
   name: "Margaret 'Maggie' Turner",
@@ -35,7 +40,7 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
   {
     id: "photo-1",
     type: "photo",
-    imageUrl: "/src/assets/images/mother_portrait_scrapbook_1794168301840.jpg",
+    imageUrl: motherPortraitImg,
     caption: "Mom in her beloved peony & wildflower garden, sunny July afternoon.",
     year: "Summer 2018",
     rotation: -2,
@@ -45,7 +50,7 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
   {
     id: "photo-2",
     type: "photo",
-    imageUrl: "/src/assets/images/family_kitchen_memory_1794168302504.jpg",
+    imageUrl: familyKitchenImg,
     caption: "Sunday dinner crew laughing around the old oak table.",
     year: "October 1984",
     rotation: 2.5,
@@ -75,7 +80,7 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
 export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
   {
     id: "recipe-1",
-    imageUrl: "/src/assets/images/mystery_recipe_pot_roast_1794168304132.jpg",
+    imageUrl: potRoastRecipeImg,
     mysteryTitlePlaceholder: "Mystery Recipe #1",
     actualDishName: "Mom's Sunday Pot Roast & Caramelized Carrots",
     options: [
@@ -105,7 +110,7 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
   },
   {
     id: "recipe-2",
-    imageUrl: "/src/assets/images/mystery_recipe_lemon_pie_1794168303342.jpg",
+    imageUrl: lemonPieRecipeImg,
     mysteryTitlePlaceholder: "Mystery Recipe #2",
     actualDishName: "Grandma's Secret Lemon Icebox Pie",
     options: [
@@ -134,7 +139,7 @@ export const INITIAL_RECIPE_GAMES: RecipeCardGame[] = [
   },
   {
     id: "recipe-3",
-    imageUrl: "/src/assets/images/mystery_recipe_cinnamon_twists_1794168303258.jpg",
+    imageUrl: cinnamonTwistsRecipeImg,
     mysteryTitlePlaceholder: "Mystery Recipe #3",
     actualDishName: "Christmas Morning Cinnamon Rolls",
     options: [
