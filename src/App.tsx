@@ -8,9 +8,10 @@ import {
   INITIAL_PROFILE, 
   INITIAL_SCRAPBOOK_ITEMS, 
   INITIAL_RECIPE_GAMES, 
-  INITIAL_GUESTBOOK_ENTRIES 
+  INITIAL_GUESTBOOK_ENTRIES,
+  INITIAL_FAMILY_REMEMBRANCE
 } from './data/initialData';
-import { MemorialProfile, ScrapbookItem, RecipeCardGame, GuestbookEntry } from './types';
+import { MemorialProfile, ScrapbookItem, RecipeCardGame, GuestbookEntry, FamilyRemembrance } from './types';
 import { Header } from './components/Header';
 import { ScrapbookView } from './components/ScrapbookView';
 import { RecipeQuizView } from './components/RecipeQuizView';
@@ -26,7 +27,7 @@ export default function App() {
   // Memorial profile (editable & persisted)
   const [profile, setProfile] = useState<MemorialProfile>(() => {
     try {
-      const saved = localStorage.getItem('memorial_profile_v8');
+      const saved = localStorage.getItem('memorial_profile_v9');
       return saved ? JSON.parse(saved) : INITIAL_PROFILE;
     } catch {
       return INITIAL_PROFILE;
@@ -36,7 +37,7 @@ export default function App() {
   // Scrapbook items (persisted)
   const [scrapbookItems, setScrapbookItems] = useState<ScrapbookItem[]>(() => {
     try {
-      const saved = localStorage.getItem('memorial_scrapbook_v8');
+      const saved = localStorage.getItem('memorial_scrapbook_v9');
       return saved ? JSON.parse(saved) : INITIAL_SCRAPBOOK_ITEMS;
     } catch {
       return INITIAL_SCRAPBOOK_ITEMS;
@@ -46,7 +47,7 @@ export default function App() {
   // Mystery recipe guessing game cards (persisted)
   const [recipes, setRecipes] = useState<RecipeCardGame[]>(() => {
     try {
-      const saved = localStorage.getItem('memorial_recipes_v8');
+      const saved = localStorage.getItem('memorial_recipes_v9');
       return saved ? JSON.parse(saved) : INITIAL_RECIPE_GAMES;
     } catch {
       return INITIAL_RECIPE_GAMES;
@@ -56,7 +57,7 @@ export default function App() {
   // Guestbook entries (persisted)
   const [guestbookEntries, setGuestbookEntries] = useState<GuestbookEntry[]>(() => {
     try {
-      const saved = localStorage.getItem('memorial_guestbook_v8');
+      const saved = localStorage.getItem('memorial_guestbook_v9');
       return saved ? JSON.parse(saved) : INITIAL_GUESTBOOK_ENTRIES;
     } catch {
       return INITIAL_GUESTBOOK_ENTRIES;
@@ -66,10 +67,20 @@ export default function App() {
   // Candle counter
   const [candleCount, setCandleCount] = useState<number>(() => {
     try {
-      const saved = localStorage.getItem('memorial_candles_v8');
+      const saved = localStorage.getItem('memorial_candles_v9');
       return saved ? parseInt(saved, 10) : 55;
     } catch {
       return 55;
+    }
+  });
+
+  // Family remembrance entries (persisted)
+  const [familyMembers, setFamilyMembers] = useState<FamilyRemembrance[]>(() => {
+    try {
+      const saved = localStorage.getItem('memorial_family_v2');
+      return saved ? JSON.parse(saved) : INITIAL_FAMILY_REMEMBRANCE;
+    } catch {
+      return INITIAL_FAMILY_REMEMBRANCE;
     }
   });
 
@@ -81,7 +92,7 @@ export default function App() {
   // Sync to localStorage
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_profile_v8', JSON.stringify(profile));
+      localStorage.setItem('memorial_profile_v9', JSON.stringify(profile));
     } catch {
       // ignore quota errors
     }
@@ -89,7 +100,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_scrapbook_v8', JSON.stringify(scrapbookItems));
+      localStorage.setItem('memorial_scrapbook_v9', JSON.stringify(scrapbookItems));
     } catch {
       // ignore
     }
@@ -97,7 +108,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_recipes_v8', JSON.stringify(recipes));
+      localStorage.setItem('memorial_recipes_v9', JSON.stringify(recipes));
     } catch {
       // ignore
     }
@@ -105,7 +116,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_guestbook_v8', JSON.stringify(guestbookEntries));
+      localStorage.setItem('memorial_guestbook_v9', JSON.stringify(guestbookEntries));
     } catch {
       // ignore
     }
@@ -113,11 +124,19 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_candles_v8', candleCount.toString());
+      localStorage.setItem('memorial_candles_v9', candleCount.toString());
     } catch {
       // ignore
     }
   }, [candleCount]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('memorial_family_v2', JSON.stringify(familyMembers));
+    } catch {
+      // ignore
+    }
+  }, [familyMembers]);
 
   // Handlers
   const handleSaveProfile = (updatedProfile: MemorialProfile) => {
@@ -136,6 +155,20 @@ export default function App() {
 
   const handleDeleteScrapbookItem = (id: string) => {
     setScrapbookItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const handleAddFamilyMember = (member: FamilyRemembrance) => {
+    setFamilyMembers((prev) => [...prev, member]);
+  };
+
+  const handleUpdateFamilyMember = (updatedMember: FamilyRemembrance) => {
+    setFamilyMembers((prev) =>
+      prev.map((m) => (m.id === updatedMember.id ? updatedMember : m))
+    );
+  };
+
+  const handleDeleteFamilyMember = (id: string) => {
+    setFamilyMembers((prev) => prev.filter((m) => m.id !== id));
   };
 
   const handleAddRecipe = (newRecipe: RecipeCardGame) => {
@@ -181,12 +214,16 @@ export default function App() {
           <ScrapbookView
             profile={profile}
             items={scrapbookItems}
+            familyMembers={familyMembers}
             onOpenEditBio={() => setIsEditBioOpen(true)}
             onUpdateProfile={handleSaveProfile}
             onOpenLightbox={(item) => setLightboxItem(item)}
             onAddItem={handleAddScrapbookItem}
             onUpdateItem={handleUpdateScrapbookItem}
             onDeleteItem={handleDeleteScrapbookItem}
+            onAddFamilyMember={handleAddFamilyMember}
+            onUpdateFamilyMember={handleUpdateFamilyMember}
+            onDeleteFamilyMember={handleDeleteFamilyMember}
             onNavigateToQuiz={() => {
               setActiveTab('quiz');
               window.scrollTo({ top: 0, behavior: 'smooth' });

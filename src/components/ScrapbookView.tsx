@@ -9,19 +9,40 @@ import {
   Printer,
   ZoomIn,
   Check,
-  Trash2
+  Trash2,
+  ExternalLink,
+  User
 } from 'lucide-react';
-import { MemorialProfile, ScrapbookItem } from '../types';
+import { MemorialProfile, ScrapbookItem, FamilyRemembrance } from '../types';
+
+function getSafeExternalUrl(raw?: string): string | null {
+  if (!raw) return null;
+  const trimmed = raw.trim();
+  if (!trimmed) return null;
+  try {
+    const parsed = new URL(trimmed);
+    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+      return parsed.href;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
 
 interface ScrapbookViewProps {
   profile: MemorialProfile;
   items: ScrapbookItem[];
+  familyMembers: FamilyRemembrance[];
   onOpenEditBio: () => void;
   onUpdateProfile: (updatedProfile: MemorialProfile) => void;
   onOpenLightbox: (item: ScrapbookItem) => void;
   onAddItem: (newItem: ScrapbookItem) => void;
   onUpdateItem: (updatedItem: ScrapbookItem) => void;
   onDeleteItem: (id: string) => void;
+  onAddFamilyMember: (member: FamilyRemembrance) => void;
+  onUpdateFamilyMember: (member: FamilyRemembrance) => void;
+  onDeleteFamilyMember: (id: string) => void;
   onNavigateToQuiz: () => void;
   onNavigateToGuestbook: () => void;
 }
@@ -29,12 +50,16 @@ interface ScrapbookViewProps {
 export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
   profile,
   items,
+  familyMembers,
   onOpenEditBio,
   onUpdateProfile,
   onOpenLightbox,
   onAddItem,
   onUpdateItem,
   onDeleteItem,
+  onAddFamilyMember,
+  onUpdateFamilyMember,
+  onDeleteFamilyMember,
   onNavigateToQuiz,
   onNavigateToGuestbook
 }) => {
@@ -47,6 +72,71 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
   const [newNote, setNewNote] = useState('');
   const [newImageUrl, setNewImageUrl] = useState('');
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+  // Family remembrance modal state
+  const [editingFamilyMember, setEditingFamilyMember] = useState<FamilyRemembrance | null>(null);
+  const [showFamilyModal, setShowFamilyModal] = useState(false);
+  const [famName, setFamName] = useState('');
+  const [famRelationship, setFamRelationship] = useState('');
+  const [famYears, setFamYears] = useState('');
+  const [famPhotoUrl, setFamPhotoUrl] = useState('');
+  const [famObituaryUrl, setFamObituaryUrl] = useState('');
+  const [famGroup, setFamGroup] = useState<"Pat's Family" | "Janice's Family Members">("Pat's Family");
+
+  const openAddFamilyModal = () => {
+    setEditingFamilyMember(null);
+    setFamName('');
+    setFamRelationship('');
+    setFamYears('');
+    setFamPhotoUrl('');
+    setFamObituaryUrl('');
+    setFamGroup("Pat's Family");
+    setShowFamilyModal(true);
+  };
+
+  const openEditFamilyModal = (member: FamilyRemembrance) => {
+    setEditingFamilyMember(member);
+    setFamName(member.name);
+    setFamRelationship(member.relationship);
+    setFamYears(member.years || '');
+    setFamPhotoUrl(member.photoUrl || '');
+    setFamObituaryUrl(member.obituaryUrl || '');
+    setFamGroup(member.group === "Janice's Family Members" ? "Janice's Family Members" : "Pat's Family");
+    setShowFamilyModal(true);
+  };
+
+  const handleFamilyPhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        setFamPhotoUrl(ev.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSaveFamilyMember = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!famName.trim() || !famRelationship.trim()) return;
+
+    const payload: FamilyRemembrance = {
+      id: editingFamilyMember ? editingFamilyMember.id : `family-${Date.now()}`,
+      name: famName.trim(),
+      relationship: famRelationship.trim(),
+      years: famYears.trim() || undefined,
+      photoUrl: famPhotoUrl || undefined,
+      obituaryUrl: famObituaryUrl.trim() || undefined,
+      group: famGroup
+    };
+
+    if (editingFamilyMember) {
+      onUpdateFamilyMember(payload);
+    } else {
+      onAddFamilyMember(payload);
+    }
+    setShowFamilyModal(false);
+  };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -498,6 +588,21 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
                   <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-sans first-letter:float-left first-letter:text-3xl first-letter:font-serif-display first-letter:font-bold first-letter:mr-2 first-letter:text-amber-900">
                     {chapter.content}
                   </p>
+                  {chapter.actionLabel && chapter.actionTarget && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (chapter.actionTarget === 'quiz') {
+                          onNavigateToQuiz();
+                        } else {
+                          onNavigateToGuestbook();
+                        }
+                      }}
+                      className="inline-flex items-center gap-1.5 pt-1 text-xs font-semibold text-amber-800 hover:text-amber-950 underline underline-offset-2 transition-colors cursor-pointer"
+                    >
+                      {chapter.actionLabel}
+                    </button>
+                  )}
                 </>
               )}
             </article>
@@ -507,7 +612,7 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
         {/* Bottom guestbook invitation */}
         <div className="pt-6 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-xs text-stone-600">
-            Have a cherished memory or story of Mom you'd like to preserve?
+            Have a cherished memory or story of Pat you'd like to preserve?
           </p>
           <button
             onClick={onNavigateToGuestbook}
@@ -517,6 +622,265 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
           </button>
         </div>
       </section>
+
+      {/* Family Remembered in Love Section */}
+      <section className="space-y-8 pt-2">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-stone-200 pb-3">
+          <div>
+            <h2 className="font-serif-display text-2xl sm:text-3xl font-bold text-stone-900">
+              Also Remembered in Love
+            </h2>
+            <p className="text-xs text-stone-500 mt-1">
+              Beloved family members remembered alongside Pat—with photos, names, years, and links to their obituaries.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={openAddFamilyModal}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium text-amber-900 bg-amber-100/80 hover:bg-amber-200 rounded-md transition-colors self-start sm:self-auto cursor-pointer whitespace-nowrap shrink-0"
+          >
+            <Plus className="w-3.5 h-3.5" />
+            Add Family Member
+          </button>
+        </div>
+
+        {(["Pat's Family", "Janice's Family Members"] as const).map((groupLabel) => {
+          const groupMembers = familyMembers.filter((m) =>
+            groupLabel === "Janice's Family Members"
+              ? m.group === "Janice's Family Members"
+              : m.group !== "Janice's Family Members"
+          );
+          if (groupMembers.length === 0) return null;
+
+          return (
+            <div key={groupLabel} className="space-y-4">
+              <h3 className="font-serif-display text-xl font-bold text-stone-800">
+                {groupLabel}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {groupMembers.map((member) => {
+                  const safeUrl = getSafeExternalUrl(member.obituaryUrl);
+                  return (
+                    <div
+                      key={member.id}
+                      className="bg-white rounded-xl border border-stone-200/90 shadow-2xs overflow-hidden flex flex-col relative group"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => openEditFamilyModal(member)}
+                        className="absolute top-2.5 right-2.5 z-10 p-1.5 rounded-full bg-white/90 text-stone-600 hover:text-amber-900 border border-stone-200 shadow-xs transition-colors cursor-pointer"
+                        title={`Edit ${member.name}`}
+                        aria-label={`Edit ${member.name}`}
+                      >
+                        <Edit3 className="w-3.5 h-3.5" />
+                      </button>
+
+                      {/* Clear, dignified portrait frame */}
+                      {member.photoUrl ? (
+                        <div className="aspect-square bg-stone-100 overflow-hidden border-b border-stone-200/80">
+                          <img
+                            src={member.photoUrl}
+                            alt={member.name}
+                            referrerPolicy="no-referrer"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => openEditFamilyModal(member)}
+                          className="aspect-square bg-amber-50/50 border-b border-stone-200/80 flex flex-col items-center justify-center p-6 text-center hover:bg-amber-50 transition-colors cursor-pointer"
+                        >
+                          <div className="w-16 h-16 rounded-full bg-white border border-amber-200/80 flex items-center justify-center mb-2 shadow-2xs">
+                            <User className="w-7 h-7 text-amber-800/60" />
+                          </div>
+                          <span className="text-xs font-medium text-amber-900">
+                            Add Portrait Photo
+                          </span>
+                        </button>
+                      )}
+
+                      <div className="p-4 flex-1 flex flex-col justify-between gap-3">
+                        <div className="space-y-1">
+                          <h4 className="font-serif-display text-lg font-bold text-stone-900 leading-snug">
+                            {member.name}
+                          </h4>
+                          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-stone-600 font-medium leading-relaxed">
+                            <span>{member.relationship}</span>
+                            {member.years && (
+                              <>
+                                <span aria-hidden="true" className="text-stone-400">·</span>
+                                <span className="text-stone-500 font-normal">{member.years}</span>
+                              </>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="pt-2 border-t border-stone-100">
+                          {safeUrl ? (
+                            <a
+                              href={safeUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-800 hover:text-amber-950 underline underline-offset-2 transition-colors"
+                            >
+                              <span>Read Obituary</span>
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => openEditFamilyModal(member)}
+                              className="text-xs font-medium text-stone-500 hover:text-amber-900 transition-colors cursor-pointer"
+                            >
+                              + Add Photo & Obituary Link
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      {/* Add / Edit Family Remembrance Modal */}
+      {showFamilyModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs overflow-y-auto">
+          <div className="relative w-full max-w-md bg-[#faf7f2] rounded-2xl p-6 shadow-2xl border border-stone-200 text-stone-800 my-8">
+            <h3 className="font-serif-display text-xl font-bold text-stone-900 mb-1">
+              {editingFamilyMember ? `Edit ${editingFamilyMember.name}` : 'Add Loved One'}
+            </h3>
+            <p className="text-xs text-stone-500 mb-4">
+              Add a clear photo, name, relationship, and obituary link so everyone in the family can remember them.
+            </p>
+
+            <form onSubmit={handleSaveFamilyMember} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-1">
+                  Portrait Photo
+                </label>
+                <div className="flex items-center gap-3">
+                  <label className="flex-1 cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-stone-300 rounded-xl p-3 bg-white hover:bg-stone-50 transition-colors">
+                    <ImageIcon className="w-5 h-5 text-stone-400 mb-1" />
+                    <span className="text-xs text-stone-600 font-medium">Click to choose photo</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFamilyPhotoUpload}
+                      className="hidden"
+                    />
+                  </label>
+                  {famPhotoUrl && (
+                    <div className="w-16 h-16 rounded-lg overflow-hidden border border-stone-300 shrink-0">
+                      <img src={famPhotoUrl} alt="Portrait preview" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={famName}
+                  onChange={(e) => setFamName(e.target.value)}
+                  placeholder="e.g. Scott"
+                  className="w-full px-3 py-2 text-sm bg-white border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-1">
+                  Family Section
+                </label>
+                <select
+                  value={famGroup}
+                  onChange={(e) => setFamGroup(e.target.value as "Pat's Family" | "Janice's Family Members")}
+                  className="w-full px-3 py-2 text-sm bg-white border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500"
+                >
+                  <option value="Pat's Family">Pat's Family</option>
+                  <option value="Janice's Family Members">Janice's Family Members</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-1">
+                  Relationship
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={famRelationship}
+                  onChange={(e) => setFamRelationship(e.target.value)}
+                  placeholder="e.g. Pat's Cousin"
+                  className="w-full px-3 py-2 text-sm bg-white border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-1">
+                  Dates or Short Note (Optional)
+                </label>
+                <input
+                  type="text"
+                  value={famYears}
+                  onChange={(e) => setFamYears(e.target.value)}
+                  placeholder="e.g. 1980 – 2026"
+                  className="w-full px-3 py-2 text-sm bg-white border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-1">
+                  Obituary Web Link (Optional)
+                </label>
+                <input
+                  type="url"
+                  value={famObituaryUrl}
+                  onChange={(e) => setFamObituaryUrl(e.target.value)}
+                  placeholder="https://..."
+                  className="w-full px-3 py-2 text-sm bg-white border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500"
+                />
+              </div>
+
+              <div className="flex items-center gap-2 pt-2">
+                {editingFamilyMember && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onDeleteFamilyMember(editingFamilyMember.id);
+                      setShowFamilyModal(false);
+                    }}
+                    className="px-3 py-2 text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100 rounded-lg transition-colors cursor-pointer"
+                  >
+                    Remove
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setShowFamilyModal(false)}
+                  className="flex-1 px-4 py-2 text-xs font-semibold text-stone-600 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 px-4 py-2 text-xs font-semibold text-white bg-amber-800 hover:bg-amber-900 rounded-lg shadow-sm transition-colors cursor-pointer"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Add Item / Photo Modal */}
       {showAddModal && (

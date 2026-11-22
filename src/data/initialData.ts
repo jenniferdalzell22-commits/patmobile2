@@ -1,4 +1,4 @@
-import { MemorialProfile, ScrapbookItem, RecipeCardGame, GuestbookEntry } from '../types';
+import { MemorialProfile, ScrapbookItem, RecipeCardGame, GuestbookEntry, FamilyRemembrance } from '../types';
 import motherPortraitImg from '../assets/images/mother_portrait_scrapbook_1794168301840.jpg';
 import familyKitchenImg from '../assets/images/family_kitchen_memory_1794168302504.jpg';
 import potRoastRecipeImg from '../assets/images/mystery_recipe_pot_roast_1794168304132.jpg';
@@ -31,7 +31,9 @@ export const INITIAL_PROFILE: MemorialProfile = {
     {
       id: "chapter-4",
       title: "4. Kitchen Archives & \"Cook at 350°\"",
-      content: "Pat cooked by heart and instinct. Her handwritten recipe cards—often written with just ingredient measurements and brief notes like \"cook at 350 degrees\" or \"put in pot\" without any titles—are precious tactile heirlooms. Holding her actual handwriting keeps her presence alive in the kitchen, bridging sensory memory through taste, scent, and shared family meals."
+      content: "Pat cooked by heart and instinct. Her handwritten recipe cards—often written with just ingredient measurements and brief notes like \"cook at 350 degrees\" or \"put in pot\" without any titles—are precious tactile heirlooms. Holding her actual handwriting keeps her presence alive in the kitchen, bridging sensory memory through taste, scent, and shared family meals. Visit our \"What Was She Cooking?\" quiz to inspect her cards and guess the dish.",
+      actionLabel: "Play \"What Was She Cooking?\" Quiz →",
+      actionTarget: "quiz"
     },
     {
       id: "chapter-5",
@@ -301,5 +303,64 @@ export const INITIAL_GUESTBOOK_ENTRIES: GuestbookEntry[] = [
     symbol: "spoon",
     candleLit: true,
     heartsCount: 16
+  }
+];
+
+export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
+  {
+    id: "family-joy",
+    name: "Joy (Broderick) Merrill",
+    relationship: "Pat's Aunt",
+    years: "1936–2006",
+    group: "Pat's Family"
+  },
+  {
+    id: "family-charlie",
+    name: "Charlie Merrill",
+    relationship: "Pat's Uncle",
+    years: "1930–1977",
+    group: "Pat's Family"
+  },
+  {
+    id: "family-nevin",
+    name: "Nevin Broderick",
+    relationship: "Pat's Uncle",
+    years: "1931–2013",
+    group: "Pat's Family"
+  },
+  {
+    id: "family-ray",
+    name: "Ray Merrill",
+    relationship: "Pat's Cousin",
+    years: "1961–2015",
+    group: "Pat's Family"
+  },
+  {
+    id: "family-scott",
+    name: "Scott Duarte",
+    relationship: "Pat's Cousin",
+    years: "1998–2026",
+    group: "Pat's Family"
+  },
+  {
+    id: "family-sharon",
+    name: "Sharon Falasca",
+    relationship: "Pat's Cousin",
+    years: "1952–2022",
+    group: "Pat's Family"
+  },
+  {
+    id: "family-helen",
+    name: "Helen Dalzell",
+    relationship: "Janice's Grandmother",
+    years: "1937–2017",
+    group: "Janice's Family Members"
+  },
+  {
+    id: "family-martha",
+    name: "Martha Livingston",
+    relationship: "Janice's Aunt",
+    years: "1940–2021",
+    group: "Janice's Family Members"
   }
 ];

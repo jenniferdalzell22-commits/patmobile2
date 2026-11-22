@@ -9,6 +9,8 @@ export interface MemorialProfile {
     id: string;
     title: string;
     content: string;
+    actionLabel?: string;
+    actionTarget?: 'quiz' | 'guestbook';
   }[];
 }
 
@@ -50,4 +52,14 @@ export interface GuestbookEntry {
   photoUrl?: string;
   candleLit?: boolean;
   heartsCount: number;
+}
+
+export interface FamilyRemembrance {
+  id: string;
+  name: string;
+  relationship: string;
+  years?: string;
+  photoUrl?: string;
+  obituaryUrl?: string;
+  group?: "Pat's Family" | "Janice's Family Members";
 }
