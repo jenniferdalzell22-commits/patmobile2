@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { 
-  Heart, 
-  Calendar, 
   Sparkles, 
   Edit3, 
   Plus, 
   Image as ImageIcon, 
   Quote, 
   UtensilsCrossed, 
-  BookOpen, 
   Printer,
-  ZoomIn
+  ZoomIn,
+  Check,
+  Trash2
 } from 'lucide-react';
 import { MemorialProfile, ScrapbookItem } from '../types';
 
@@ -18,8 +17,11 @@ interface ScrapbookViewProps {
   profile: MemorialProfile;
   items: ScrapbookItem[];
   onOpenEditBio: () => void;
+  onUpdateProfile: (updatedProfile: MemorialProfile) => void;
   onOpenLightbox: (item: ScrapbookItem) => void;
   onAddItem: (newItem: ScrapbookItem) => void;
+  onUpdateItem: (updatedItem: ScrapbookItem) => void;
+  onDeleteItem: (id: string) => void;
   onNavigateToQuiz: () => void;
   onNavigateToGuestbook: () => void;
 }
@@ -28,12 +30,18 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
   profile,
   items,
   onOpenEditBio,
+  onUpdateProfile,
   onOpenLightbox,
   onAddItem,
+  onUpdateItem,
+  onDeleteItem,
   onNavigateToQuiz,
   onNavigateToGuestbook
 }) => {
   const [showAddModal, setShowAddModal] = useState(false);
+  const [isEditingCards, setIsEditingCards] = useState(false);
+  const [editingCardId, setEditingCardId] = useState<string | null>(null);
+  const [isEditingBioInline, setIsEditingBioInline] = useState(false);
   const [newCaption, setNewCaption] = useState('');
   const [newYear, setNewYear] = useState('');
   const [newNote, setNewNote] = useState('');
@@ -149,83 +157,220 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
               Pat's Scrapbook & Treasures
             </h2>
             <p className="text-xs text-stone-500 mt-1">
-              Photographs, everyday phrases, and tokens pinned to her memory album. Click any card to enlarge.
+              {isEditingCards
+                ? 'Click inside any card title, caption, or year below to type directly onto the page.'
+                : 'Photographs, everyday phrases, and tokens pinned to her memory album. Click any card to enlarge or edit inline.'}
             </p>
           </div>
-          <button
-            onClick={() => setShowAddModal(true)}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium text-amber-900 bg-amber-100/80 hover:bg-amber-200 rounded-md transition-colors self-start sm:self-auto cursor-pointer"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            Pin Photo to Scrapbook
-          </button>
+          <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto">
+            <button
+              onClick={() => {
+                setIsEditingCards((prev) => !prev);
+                setEditingCardId(null);
+              }}
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                isEditingCards
+                  ? 'bg-amber-800 text-white hover:bg-amber-900'
+                  : 'text-stone-700 bg-white hover:bg-stone-100 border border-stone-200'
+              }`}
+            >
+              {isEditingCards ? (
+                <>
+                  <Check className="w-3.5 h-3.5" />
+                  <span>Done Editing</span>
+                </>
+              ) : (
+                <>
+                  <Edit3 className="w-3.5 h-3.5 text-amber-800" />
+                  <span>Edit Text Inline</span>
+                </>
+              )}
+            </button>
+            <button
+              onClick={() => setShowAddModal(true)}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium text-amber-900 bg-amber-100/80 hover:bg-amber-200 rounded-md transition-colors cursor-pointer whitespace-nowrap shrink-0"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              Pin Photo to Scrapbook
+            </button>
+          </div>
         </div>
 
         {/* Dynamic Scrapbook Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-4 items-start">
-          {items.map((item) => (
-            <div
-              key={item.id}
-              style={{ transform: `rotate(${item.rotation}deg)` }}
-              onClick={() => onOpenLightbox(item)}
-              className="group relative cursor-pointer polaroid-frame rounded-sm"
-            >
-              {/* Washi Tape styling */}
-              {item.tapeStyle === 'washi-cream' && (
-                <div className="washi-tape top-[-10px] left-1/2 -translate-x-1/2 w-28 bg-[#f5eccb]/80" />
-              )}
-              {item.tapeStyle === 'washi-pink' && (
-                <div className="washi-tape top-[-10px] left-1/2 -translate-x-1/2 w-28 bg-[#ebd3c5]/80" />
-              )}
-              {item.tapeStyle === 'corners' && (
-                <>
-                  <div className="absolute top-1 left-1 w-4 h-4 border-t-2 border-l-2 border-amber-800/40 z-10" />
-                  <div className="absolute top-1 right-1 w-4 h-4 border-t-2 border-r-2 border-amber-800/40 z-10" />
-                </>
-              )}
-              {item.tapeStyle === 'top' && (
-                <div className="washi-tape top-[-10px] left-1/2 -translate-x-1/2 w-20 bg-stone-300/60" />
-              )}
+          {items.map((item) => {
+            const isCardEditing = isEditingCards || editingCardId === item.id;
 
-              {/* Photo Content */}
-              {item.imageUrl ? (
-                <div className="relative aspect-4/3 bg-stone-100 overflow-hidden rounded-xs border border-stone-200/80">
-                  <img
-                    src={item.imageUrl}
-                    alt={item.caption}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-stone-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <ZoomIn className="w-6 h-6 text-white drop-shadow-md" />
-                  </div>
-                </div>
-              ) : (
-                <div className="aspect-4/3 bg-amber-50/70 p-4 rounded-xs border border-amber-200/50 flex flex-col justify-center items-center text-center">
-                  {item.type === 'quote' ? (
-                    <Quote className="w-6 h-6 text-amber-700/60 mb-2" />
-                  ) : (
-                    <Sparkles className="w-6 h-6 text-amber-700/60 mb-2" />
-                  )}
-                  <p className="font-serif-display text-sm font-semibold text-stone-800 line-clamp-3">
-                    {item.caption}
-                  </p>
-                </div>
-              )}
-
-              {/* Handwritten Caption at bottom of Polaroid */}
-              <div className="pt-3 px-1">
-                <p className="font-handwriting text-stone-900 text-lg leading-tight line-clamp-2">
-                  {item.caption}
-                </p>
-                {item.year && (
-                  <span className="text-[11px] text-stone-500 font-sans tracking-wide block mt-1">
-                    {item.year}
-                  </span>
+            return (
+              <div
+                key={item.id}
+                style={{ transform: isCardEditing ? 'rotate(0deg)' : `rotate(${item.rotation}deg)` }}
+                onClick={() => {
+                  if (!isCardEditing) {
+                    onOpenLightbox(item);
+                  }
+                }}
+                className={`group relative polaroid-frame rounded-sm ${
+                  isCardEditing ? 'ring-2 ring-amber-500/70 cursor-default' : 'cursor-pointer'
+                }`}
+              >
+                {/* Washi Tape styling */}
+                {item.tapeStyle === 'washi-cream' && (
+                  <div className="washi-tape top-[-10px] left-1/2 -translate-x-1/2 w-28 bg-[#f5eccb]/80" />
                 )}
+                {item.tapeStyle === 'washi-pink' && (
+                  <div className="washi-tape top-[-10px] left-1/2 -translate-x-1/2 w-28 bg-[#ebd3c5]/80" />
+                )}
+                {item.tapeStyle === 'corners' && (
+                  <>
+                    <div className="absolute top-1 left-1 w-4 h-4 border-t-2 border-l-2 border-amber-800/40 z-10" />
+                    <div className="absolute top-1 right-1 w-4 h-4 border-t-2 border-r-2 border-amber-800/40 z-10" />
+                  </>
+                )}
+                {item.tapeStyle === 'top' && (
+                  <div className="washi-tape top-[-10px] left-1/2 -translate-x-1/2 w-20 bg-stone-300/60" />
+                )}
+
+                {/* Quick Edit / Done button on card */}
+                <div className="absolute top-2 right-2 z-20 flex items-center gap-1">
+                  {isCardEditing && !isEditingCards && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditingCardId(null);
+                      }}
+                      className="p-1.5 rounded-full bg-amber-800 text-white shadow-xs hover:bg-amber-900 transition-colors cursor-pointer"
+                      title="Save card edits"
+                      aria-label="Done editing card"
+                    >
+                      <Check className="w-3 h-3" />
+                    </button>
+                  )}
+                  {!isCardEditing && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditingCardId(item.id);
+                      }}
+                      className="p-1.5 rounded-full bg-white/90 text-stone-600 hover:text-amber-900 border border-stone-200 shadow-xs opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity cursor-pointer"
+                      title="Edit this card inline"
+                      aria-label="Edit card text inline"
+                    >
+                      <Edit3 className="w-3 h-3" />
+                    </button>
+                  )}
+                  {isCardEditing && items.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onDeleteItem(item.id);
+                      }}
+                      className="p-1.5 rounded-full bg-white/95 text-stone-500 hover:text-rose-600 border border-stone-200 shadow-xs transition-colors cursor-pointer"
+                      title="Remove card"
+                      aria-label="Remove card"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
+                  )}
+                </div>
+
+                {/* Photo or Quote/Keepsake Card Box */}
+                {item.imageUrl ? (
+                  <div className="relative aspect-4/3 bg-stone-100 overflow-hidden rounded-xs border border-stone-200/80">
+                    <img
+                      src={item.imageUrl}
+                      alt={item.caption}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {!isCardEditing && (
+                      <div className="absolute inset-0 bg-stone-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <ZoomIn className="w-6 h-6 text-white drop-shadow-md" />
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div
+                    onClick={(e) => {
+                      if (isCardEditing) e.stopPropagation();
+                    }}
+                    className="aspect-4/3 bg-amber-50/70 p-4 rounded-xs border border-amber-200/50 flex flex-col justify-center items-center text-center"
+                  >
+                    {item.type === 'quote' ? (
+                      <Quote className="w-6 h-6 text-amber-700/60 mb-2 shrink-0" />
+                    ) : (
+                      <Sparkles className="w-6 h-6 text-amber-700/60 mb-2 shrink-0" />
+                    )}
+                    {isCardEditing ? (
+                      <textarea
+                        rows={3}
+                        value={item.caption}
+                        onChange={(e) => onUpdateItem({ ...item, caption: e.target.value })}
+                        placeholder="Type card headline or quote..."
+                        aria-label="Edit card text"
+                        className="w-full bg-white/80 font-serif-display text-sm font-semibold text-stone-800 text-center p-1.5 rounded border border-dashed border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-600 resize-none"
+                      />
+                    ) : (
+                      <p className="font-serif-display text-sm font-semibold text-stone-800 line-clamp-3">
+                        {item.caption}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Handwritten Caption & Year at bottom of Polaroid */}
+                <div
+                  onClick={(e) => {
+                    if (isCardEditing) e.stopPropagation();
+                  }}
+                  className="pt-3 px-1 space-y-1"
+                >
+                  {isCardEditing ? (
+                    <>
+                      <textarea
+                        rows={2}
+                        value={item.caption}
+                        onChange={(e) => onUpdateItem({ ...item, caption: e.target.value })}
+                        placeholder="Type handwritten caption..."
+                        aria-label="Edit card caption"
+                        className="w-full bg-amber-50/40 font-handwriting text-stone-900 text-lg leading-tight p-1 rounded border border-dashed border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-600 resize-none"
+                      />
+                      <input
+                        type="text"
+                        value={item.year || ''}
+                        onChange={(e) => onUpdateItem({ ...item, year: e.target.value })}
+                        placeholder="Year or label..."
+                        aria-label="Edit card year or subtitle"
+                        className="w-full bg-amber-50/40 text-[11px] text-stone-600 font-sans tracking-wide px-1 py-0.5 rounded border border-dashed border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-600"
+                      />
+                      <textarea
+                        rows={2}
+                        value={item.note || ''}
+                        onChange={(e) => onUpdateItem({ ...item, note: e.target.value })}
+                        placeholder="Back-of-card note (shown when clicked)..."
+                        aria-label="Edit back-of-card note"
+                        className="w-full bg-stone-50 text-[11px] text-stone-600 font-sans p-1 rounded border border-dashed border-stone-300 focus:outline-none focus:ring-1 focus:ring-amber-600 resize-none"
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <p className="font-handwriting text-stone-900 text-lg leading-tight line-clamp-2">
+                        {item.caption}
+                      </p>
+                      {item.year && (
+                        <span className="text-[11px] text-stone-500 font-sans tracking-wide block mt-1">
+                          {item.year}
+                        </span>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -262,31 +407,83 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
               Her Life & Story
             </h2>
             <p className="text-xs text-stone-500 mt-1">
-              The chapters of a life lived with generosity, warmth, and laughter.
+              {isEditingBioInline
+                ? 'Click into any chapter title or paragraph below to type directly.'
+                : 'The chapters of a life lived with generosity, warmth, and laughter.'}
             </p>
           </div>
-          <button
-            onClick={onOpenEditBio}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-amber-900 bg-amber-100/60 hover:bg-amber-100 rounded-md transition-colors self-start sm:self-auto cursor-pointer"
-          >
-            <Edit3 className="w-3.5 h-3.5" />
-            Edit Story
-          </button>
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            <button
+              onClick={() => setIsEditingBioInline((prev) => !prev)}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                isEditingBioInline
+                  ? 'bg-amber-800 text-white hover:bg-amber-900'
+                  : 'text-amber-900 bg-amber-100/60 hover:bg-amber-100'
+              }`}
+            >
+              {isEditingBioInline ? (
+                <>
+                  <Check className="w-3.5 h-3.5" />
+                  <span>Done Editing</span>
+                </>
+              ) : (
+                <>
+                  <Edit3 className="w-3.5 h-3.5" />
+                  <span>Type Directly on Page</span>
+                </>
+              )}
+            </button>
+            <button
+              onClick={onOpenEditBio}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-stone-700 bg-white hover:bg-stone-100 rounded-md border border-stone-200 transition-colors cursor-pointer whitespace-nowrap shrink-0"
+            >
+              <span>Manage Chapters</span>
+            </button>
+          </div>
         </div>
 
         {/* Narrative Chapters */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {profile.biographyChapters.map((chapter) => (
+          {profile.biographyChapters.map((chapter, idx) => (
             <article 
               key={chapter.id} 
               className="p-6 bg-white/80 rounded-xl border border-stone-200/90 shadow-2xs space-y-3 relative group"
             >
-              <h3 className="font-serif-display text-lg sm:text-xl font-bold text-stone-900 tracking-tight flex items-baseline gap-2">
-                <span>{chapter.title}</span>
-              </h3>
-              <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-sans first-letter:float-left first-letter:text-3xl first-letter:font-serif-display first-letter:font-bold first-letter:mr-2 first-letter:text-amber-900">
-                {chapter.content}
-              </p>
+              {isEditingBioInline ? (
+                <>
+                  <input
+                    type="text"
+                    value={chapter.title}
+                    onChange={(e) => {
+                      const updated = [...profile.biographyChapters];
+                      updated[idx] = { ...updated[idx], title: e.target.value };
+                      onUpdateProfile({ ...profile, biographyChapters: updated });
+                    }}
+                    aria-label={`Edit ${chapter.title}`}
+                    className="w-full font-serif-display text-lg sm:text-xl font-bold text-stone-900 bg-amber-50/40 px-2 py-1 rounded border border-dashed border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-600"
+                  />
+                  <textarea
+                    rows={6}
+                    value={chapter.content}
+                    onChange={(e) => {
+                      const updated = [...profile.biographyChapters];
+                      updated[idx] = { ...updated[idx], content: e.target.value };
+                      onUpdateProfile({ ...profile, biographyChapters: updated });
+                    }}
+                    aria-label={`Edit content for ${chapter.title}`}
+                    className="w-full text-sm sm:text-base text-stone-700 leading-relaxed font-sans bg-amber-50/30 p-2 rounded border border-dashed border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-600"
+                  />
+                </>
+              ) : (
+                <>
+                  <h3 className="font-serif-display text-lg sm:text-xl font-bold text-stone-900 tracking-tight flex items-baseline gap-2">
+                    <span>{chapter.title}</span>
+                  </h3>
+                  <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-sans first-letter:float-left first-letter:text-3xl first-letter:font-serif-display first-letter:font-bold first-letter:mr-2 first-letter:text-amber-900">
+                    {chapter.content}
+                  </p>
+                </>
+              )}
             </article>
           ))}
         </div>

@@ -128,6 +128,16 @@ export default function App() {
     setScrapbookItems([newItem, ...scrapbookItems]);
   };
 
+  const handleUpdateScrapbookItem = (updatedItem: ScrapbookItem) => {
+    setScrapbookItems((prev) =>
+      prev.map((item) => (item.id === updatedItem.id ? updatedItem : item))
+    );
+  };
+
+  const handleDeleteScrapbookItem = (id: string) => {
+    setScrapbookItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
   const handleAddRecipe = (newRecipe: RecipeCardGame) => {
     setRecipes([...recipes, newRecipe]);
   };
@@ -172,8 +182,11 @@ export default function App() {
             profile={profile}
             items={scrapbookItems}
             onOpenEditBio={() => setIsEditBioOpen(true)}
+            onUpdateProfile={handleSaveProfile}
             onOpenLightbox={(item) => setLightboxItem(item)}
             onAddItem={handleAddScrapbookItem}
+            onUpdateItem={handleUpdateScrapbookItem}
+            onDeleteItem={handleDeleteScrapbookItem}
             onNavigateToQuiz={() => {
               setActiveTab('quiz');
               window.scrollTo({ top: 0, behavior: 'smooth' });
