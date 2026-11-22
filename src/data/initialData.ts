@@ -119,7 +119,7 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     type: "photo",
      imageUrl: "./assets/aistudio/janice-nicole.jpg",
     caption: "Janice - Grandma's heart",
-    year: "Grandaughter",
+    year: "Grandaughter with her cousin Nicole. ",
     rotation: -1.2,
     tapeStyle: "washi-cream",
     note: "Her signature, affectionate way of asking for everyday errands or shopping trips."
