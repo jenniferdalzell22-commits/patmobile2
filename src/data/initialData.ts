@@ -357,8 +357,9 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
   {
     id: "family-charlie",
     name: "Charlie Merrill",
-    relationship: "Pat's Uncle",
+    relationship: "Pat's Uncle · Pictured with his kids (Kit, Kim, Chuck & Ray)",
     years: "1930–1977",
+    photoUrl: "./assets/aistudio/charlie-kids_375a2333.jpg",
     group: "Pat's Family"
   },
   {

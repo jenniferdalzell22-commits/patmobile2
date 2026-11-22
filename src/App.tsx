@@ -77,7 +77,7 @@ export default function App() {
   // Family remembrance entries (persisted)
   const [familyMembers, setFamilyMembers] = useState<FamilyRemembrance[]>(() => {
     try {
-      const saved = localStorage.getItem('memorial_family_v7');
+      const saved = localStorage.getItem('memorial_family_v8');
       return saved ? JSON.parse(saved) : INITIAL_FAMILY_REMEMBRANCE;
     } catch {
       return INITIAL_FAMILY_REMEMBRANCE;
@@ -132,7 +132,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_family_v7', JSON.stringify(familyMembers));
+      localStorage.setItem('memorial_family_v8', JSON.stringify(familyMembers));
     } catch {
       // ignore
     }
