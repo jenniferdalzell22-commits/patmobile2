@@ -25,6 +25,7 @@ export interface ScrapbookItem {
   note?: string;
   actionLabel?: string;
   actionTarget?: 'quiz' | 'guestbook';
+  imagePosition?: string;
 }
 
 export interface RecipeCardGame {

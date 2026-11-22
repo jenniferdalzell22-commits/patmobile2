@@ -369,12 +369,13 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
 
                 {/* Photo or Quote/Keepsake Card Box */}
                 {item.imageUrl ? (
-                  <div className="relative aspect-4/3 bg-stone-100 overflow-hidden rounded-xs border border-stone-200/80">
+                  <div className="relative aspect-square bg-stone-100 overflow-hidden rounded-xs border border-stone-200/80">
                     <img
                       src={item.imageUrl}
                       alt={item.caption}
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      style={item.imagePosition ? { objectPosition: item.imagePosition } : undefined}
+                      className="w-full h-full object-cover object-[50%_42%] transition-transform duration-500 group-hover:scale-105"
                     />
                     {!isCardEditing && (
                       <div className="absolute inset-0 bg-stone-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -387,7 +388,7 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
                     onClick={(e) => {
                       if (isCardEditing) e.stopPropagation();
                     }}
-                    className="aspect-4/3 bg-amber-50/70 p-4 rounded-xs border border-amber-200/50 flex flex-col justify-center items-center text-center"
+                    className="aspect-square bg-amber-50/70 p-4 rounded-xs border border-amber-200/50 flex flex-col justify-center items-center text-center"
                   >
                     {item.type === 'quote' ? (
                       <Quote className="w-6 h-6 text-amber-700/60 mb-2 shrink-0" />
@@ -447,7 +448,7 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
                     </>
                   ) : (
                     <>
-                      <p className="font-handwriting text-stone-900 text-lg leading-tight line-clamp-2">
+                      <p className="font-handwriting text-stone-900 text-lg leading-tight line-clamp-3">
                         {item.caption}
                       </p>
                       {item.year && (
@@ -682,7 +683,7 @@ export const ScrapbookView: React.FC<ScrapbookViewProps> = ({
                             src={member.photoUrl}
                             alt={member.name}
                             referrerPolicy="no-referrer"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-[50%_15%]"
                           />
                         </div>
                       ) : (

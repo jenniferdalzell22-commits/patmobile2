@@ -37,7 +37,7 @@ export default function App() {
   // Scrapbook items (persisted)
   const [scrapbookItems, setScrapbookItems] = useState<ScrapbookItem[]>(() => {
     try {
-      const saved = localStorage.getItem('memorial_scrapbook_v9');
+      const saved = localStorage.getItem('memorial_scrapbook_v22');
       return saved ? JSON.parse(saved) : INITIAL_SCRAPBOOK_ITEMS;
     } catch {
       return INITIAL_SCRAPBOOK_ITEMS;
@@ -77,7 +77,7 @@ export default function App() {
   // Family remembrance entries (persisted)
   const [familyMembers, setFamilyMembers] = useState<FamilyRemembrance[]>(() => {
     try {
-      const saved = localStorage.getItem('memorial_family_v2');
+      const saved = localStorage.getItem('memorial_family_v7');
       return saved ? JSON.parse(saved) : INITIAL_FAMILY_REMEMBRANCE;
     } catch {
       return INITIAL_FAMILY_REMEMBRANCE;
@@ -100,7 +100,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_scrapbook_v9', JSON.stringify(scrapbookItems));
+      localStorage.setItem('memorial_scrapbook_v22', JSON.stringify(scrapbookItems));
     } catch {
       // ignore
     }
@@ -132,7 +132,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('memorial_family_v2', JSON.stringify(familyMembers));
+      localStorage.setItem('memorial_family_v7', JSON.stringify(familyMembers));
     } catch {
       // ignore
     }

@@ -1,6 +1,4 @@
 import { MemorialProfile, ScrapbookItem, RecipeCardGame, GuestbookEntry, FamilyRemembrance } from '../types';
-import motherPortraitImg from '../assets/images/mother_portrait_scrapbook_1794168301840.jpg';
-import familyKitchenImg from '../assets/images/family_kitchen_memory_1794168302504.jpg';
 import potRoastRecipeImg from '../assets/images/mystery_recipe_pot_roast_1794168304132.jpg';
 import lemonPieRecipeImg from '../assets/images/mystery_recipe_lemon_pie_1794168303342.jpg';
 import cinnamonTwistsRecipeImg from '../assets/images/mystery_recipe_cinnamon_twists_1794168303258.jpg';
@@ -47,42 +45,74 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
   {
     id: "photo-1",
     type: "photo",
-    imageUrl: motherPortraitImg,
-    caption: "Pat smiling in the afternoon garden light, Irvington roots at heart.",
-    year: "1947 – 2026",
+    imageUrl: "./assets/aistudio/Cabrini-christmas_376bce6e.jpg",
+    caption: "Pat & Jennifer at Pat's first Christmas party at Mother Cabrini.",
+    year: "First Christmas at Cabrini",
     rotation: -2,
     tapeStyle: "washi-cream",
-    note: "Widely recognized at Mother Cabrini Nursing Home and at home for her gentleness, quiet strength, and deep empathy."
+    note: "A rare and treasured photo—Pat hated having her picture taken, which makes this smiling moment of her and Jennifer at her first Mother Cabrini Christmas party all the more precious."
+  },
+  {
+    id: "photo-christmas-kids",
+    type: "photo",
+    imageUrl: "./assets/aistudio/family-xmas_537780fd.jpg",
+    imagePosition: "50% 50%",
+    caption: "All of the kids one Christmas—each one has a special place in Pat's heart.",
+    year: "Family Christmas",
+    rotation: 1.5,
+    tapeStyle: "washi-pink",
+    note: "Janice and all of the kids gathered together at Christmas—every single one held a special place in Pat's heart."
   },
   {
     id: "photo-2",
     type: "photo",
-    imageUrl: familyKitchenImg,
-    caption: "Around the family table—where taste, scent, and laughter brought everyone together.",
-    year: "Shared Family Meals",
-    rotation: 2.5,
+    imageUrl: "./assets/aistudio/buddy_9cdefd3c.jpg",
+    caption: "Our beloved dog, Buddy, cozy by the fireplace in Tarrytown.",
+    year: "Tarrytown Home",
+    rotation: -1.8,
     tapeStyle: "corners",
-    note: "Whether riding along as everyone's favorite passenger in the \"Pat-Mobile\" or gathering everyone for dinner, Pat's heart and table were always open."
+    note: "When we lived in Tarrytown, we had our sweet yellow lab Buddy—always keeping warm right in front of the fire."
   },
   {
-    id: "quote-1",
-    type: "quote",
-    caption: "\"Don't worry, it'll turn out ok.\"",
-    year: "55 Years of Comfort",
-    rotation: -1.5,
+    id: "photo-jj",
+    type: "photo",
+    imageUrl: "./assets/aistudio/jj-first-pc_30cec22d.jpg",
+    imagePosition: "68% 50%",
+    caption: "JJ in front of my first computer (Apple IIc) — JJ was the coolest cat!",
+    year: "Apple IIc Days",
+    rotation: 1.4,
+    tapeStyle: "washi-cream",
+    note: "Our beloved cat JJ sitting right on the desk chair in front of Jennifer's very first computer, an Apple IIc—JJ was the coolest cat!"
+  },
+  {
+    id: "photo-chuck",
+    type: "photo",
+    imageUrl: "./assets/aistudio/with-chuck_7bc4fd1f.jpg",
+    caption: "Pat with her cousin Chuck Merrill.",
+    year: "Family Celebration",
+    rotation: -1.4,
+    tapeStyle: "washi-cream",
+    note: "Pat dressed up in pink alongside her cousin Chuck Merrill—a special family celebration from years past."
+  },
+  {
+    id: "photo-wedding-family",
+    type: "photo",
+    imageUrl: "./assets/aistudio/wed-photo-fam_083ab128.jpg",
+    caption: "Jennifer & Bob's wedding—Pat with family and her good friend Paula.",
+    year: "Jennifer & Bob's Wedding",
+    rotation: 1.6,
     tapeStyle: "washi-pink",
-    note: "Her comforting promise over 55 years of motherhood and grandmothership—paired with her steady refrain: \"It will work itself out.\""
+    note: "Celebrating Jennifer and Bob's wedding surrounded by beloved family and Pat's dear friend Paula, who is also fondly remembered in love."
   },
   {
-    id: "keepsake-1",
-    type: "keepsake",
-    caption: "\"You need to figure it out.\"",
-    year: "Pat's Kitchen Humor",
-    rotation: 1.8,
-    tapeStyle: "top",
-    note: "What Pat would playfully say with a laugh whenever anyone asked for her secret recipes after she left only notes like \"cook at 350 degrees\" or \"put in pot.\" Think you can decode her recipe cards? Try the \"What Was She Cooking?\" game!",
-    actionLabel: "Play \"What Was She Cooking?\" →",
-    actionTarget: "quiz"
+    id: "photo-connie",
+    type: "photo",
+    imageUrl: "./assets/aistudio/connie_7cedeb2c.jpg",
+    caption: "Aunt Connie—one of Pat's favorite people.",
+    year: "Extended Family",
+    rotation: -1.1,
+    tapeStyle: "corners",
+    note: "Aunt Connie, part of our extended-extended family and always one of Pat's very favorite people."
   },
   {
     id: "quote-2",
@@ -101,6 +131,15 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     rotation: 2.1,
     tapeStyle: "corners",
     note: "Pat never drove and was always riding in the passenger seat—which made calling any car carrying her the \"Pat-Mobile\" (to the tune of the Batman / Batmobile song!) such a beloved family joke."
+  },
+  {
+    id: "quote-1",
+    type: "quote",
+    caption: "\"Don't worry, it'll turn out ok.\"",
+    year: "55 Years of Comfort",
+    rotation: -1.5,
+    tapeStyle: "washi-pink",
+    note: "Her comforting promise over 55 years of motherhood and grandmothership—paired with her steady refrain: \"It will work itself out.\""
   }
 ];
 
@@ -310,8 +349,9 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
   {
     id: "family-joy",
     name: "Joy (Broderick) Merrill",
-    relationship: "Pat's Aunt",
+    relationship: "Pat's Aunt · Pictured with Pete",
     years: "1936–2006",
+    photoUrl: "./assets/aistudio/pete-joy_27a4e9cd.jpg",
     group: "Pat's Family"
   },
   {
@@ -324,15 +364,17 @@ export const INITIAL_FAMILY_REMEMBRANCE: FamilyRemembrance[] = [
   {
     id: "family-nevin",
     name: "Nevin Broderick",
-    relationship: "Pat's Uncle",
+    relationship: "Pat's Uncle · Pictured with sister Joy",
     years: "1931–2013",
+    photoUrl: "./assets/aistudio/nevin-joy_f18d4ac0.jpg",
     group: "Pat's Family"
   },
   {
     id: "family-ray",
     name: "Ray Merrill",
-    relationship: "Pat's Cousin",
+    relationship: "Pat's Cousin · Pictured with cousin Darren",
     years: "1961–2015",
+    photoUrl: "./assets/aistudio/ray-darren_2e153524.jpg",
     group: "Pat's Family"
   },
   {
