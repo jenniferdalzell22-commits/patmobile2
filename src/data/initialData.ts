@@ -125,8 +125,9 @@ export const INITIAL_SCRAPBOOK_ITEMS: ScrapbookItem[] = [
     note: "A snapshot of Janice—one of the bright lights who always brought an extra measure of warmth, pride, and joy to Grandma's heart."
   },
   {
-    id: "keepsake-2",
-    type: "keepsake",
+    id: "photo-pm",
+    type: "photo",
+     imageUrl: "./assets/aistudio/The Pat-Mobile memorial illustration.png",
     caption: "The Legendary \"Pat-Mobile\"",
     year: "Always the Passenger",
     rotation: 2.1,
